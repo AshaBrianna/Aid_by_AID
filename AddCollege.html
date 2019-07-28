@@ -5,14 +5,31 @@
     <title>College Financial Planning Aid</title>
     <link
       rel="stylesheet"
-      href="AddCollege.css">
+      href="aid_by_AID.css">
   </head>
   <body>
-    <h1>Please enter the college's name and associated information below.</h1>
-    USER INPUT ENTRY AREA
+    <h1>Please enter the college's name and associated annual costs below:</h1>
     <br>
-    <br>
+    <form method="post" action="/">
+      Name of college:
+      <input type="text" name="college_name">
+      <br>
+      Cost of tuition:
+      <input type="text" name="tuition">
+      <br>
+      Cost of housing:
+      <input type="text" name="housing">
+      <br>
+      Cost of Travel/Transportation:
+      <input type="text" name="travel">
+      <br>
+      <br>
+      <br>
+      <!-- <input type="submit" name="submit" value="Update Spreadsheet"> -->
+    </form>
 <!-- Enter Button redirects to MainPage.html -->
     <a href="MainPage.html" > ENTER </a>
+    <br>
+    <br>
   </body>
 </html>
