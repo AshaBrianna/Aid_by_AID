@@ -1,0 +1,28 @@
+h1
+  {
+    color: gold;
+    font-family: "Papyrus", "Lucida Grande", sans-serif;
+  }
+
+h2
+  {
+    color: darkgrey;
+    font-family: "Papyrus", "Lucida Grande", sans-serif;
+
+  }
+
+h3
+  {
+    color: lightgrey;
+    font-family: "Papyrus", "Lucida Grande", sans-serif;
+
+  }
+
+body
+  {
+    text-align: center;
+    border: outset 1em khaki;
+    border-radius: 0em;
+    background: beige;
+    font-family: "Papyrus", "Lucida Grande", sans-serif;
+  }
