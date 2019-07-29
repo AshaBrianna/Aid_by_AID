@@ -28,7 +28,7 @@ class PopulateDataBase(webapp2.RequestHandler):
         boston_universiy = College(name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
         boston_universiy = College(name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
     def post(self):
-        College(name = self.request.get("college_name"), tuition = int(self.request.get("tuition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
+        College(name = self.request.get("college_name"), tuition = int(self.request.get("tutition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
 
         self.redirect("/", True)
 
