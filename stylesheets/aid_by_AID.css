@@ -1,40 +1,53 @@
 h1
   {
-    color: gold;
-    font-family: "Papyrus", "Lucida Grande", sans-serif;
+    color: peru;
+    font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
+    margin-top: 40px;
   }
 
 h2
   {
     color: darkgrey;
-    font-family: "Papyrus", "Lucida Grande", sans-serif;
+    font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
 
   }
 
 h3
   {
     color: lightgrey;
-    font-family: "Papyrus", "Lucida Grande", sans-serif;
+    font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
 
   }
 
 body
   {
+    color:peru;
     text-align: center;
-    border: outset 1em khaki;
+    border: outset 1em SandyBrown;
     border-radius: 0em;
-    background: beige;
-    font-family: "Papyrus", "Lucida Grande", sans-serif;
+    background: CornSilk;
+    font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
+    margin: 40px;
   }
 
   {
   box-sizing: border-box;
 }
 
+p
+{
+  margin: 40px;
+}
+
+form
+{
+  margin: 40px;
+}
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid peru;
   border-radius: 4px;
   resize: vertical;
 }
@@ -45,7 +58,7 @@ label {
 }
 
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: peru;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -55,12 +68,12 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: lightgreen;
 }
 
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: BlanchedAlmond;
   padding: 20px;
 }
 
