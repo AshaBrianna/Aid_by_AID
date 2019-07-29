@@ -103,3 +103,19 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
+
+button
+{
+  {
+    background-color: peru;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+    hover {
+    background-color: lightgreen;
+    }
+}
