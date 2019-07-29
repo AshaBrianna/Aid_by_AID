@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="`en`" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>your college list</h1>
+    <div class="">
+        {% for colleges in college %}
+        <div class="" name = {{colleges.name}}>
+          <p>{{colleges.name}}</p>
+          <p>{{colleges.tuition}}</p>
+          <p>{{colleges.housing}}</p>
+
+        </div>
+        {% endfor %}
+    </div>
+
+  </body>
+</html>
