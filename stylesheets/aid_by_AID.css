@@ -103,16 +103,12 @@ flex-direction: row;
   margin-top: 6px;
   }
 
-<<<<<<< HEAD
-
-=======
 .col-75 {
   float: left;
   width: 75%;
   margin-top: 6px;
   }
->>>>>>> 8dfa6939d2e77410c8ff70710d932dfe8c930ef8
-
+  
 .row:after {
   content: "";
   display: table;
