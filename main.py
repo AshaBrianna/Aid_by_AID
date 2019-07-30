@@ -47,7 +47,7 @@ class BudgetHandler(webapp2.RequestHandler):
 
     def get(self):
 
-        template = jinja_env.get_template('templates/AddBudget.html')
+        template = jinja_env.get_template('AddBudget.html')
         self.response.write(template.render())
 
 #
