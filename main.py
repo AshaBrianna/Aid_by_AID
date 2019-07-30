@@ -112,9 +112,6 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
                     student = student_key,
                 ).put()
 
-
-
-
         self.redirect('/', True)
 
 
