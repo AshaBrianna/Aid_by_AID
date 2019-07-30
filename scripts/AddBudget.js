@@ -1,3 +1,3 @@
 
 
-document.getElementBy("col-75").innerHTML = "Hello JavaScript!";
+document.getElementBy('college_table').innerCSS = Blue;

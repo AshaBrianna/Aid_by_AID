@@ -14,6 +14,13 @@ class College(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
 
+class Student(ndb.Model):
+    home_location = ndb.StringProperty(required = True)
+    budget = ndb.IntegerProperty(required = False, default = 0)
+    prospective_colleges = ndb.StringProperty(required = False, default = 0)
+    grants = ndb.IntegerProperty(required = False, default = 0)
+    emails = ndb.StringProperty(required = True, default = 0)
+     
 
 
 
