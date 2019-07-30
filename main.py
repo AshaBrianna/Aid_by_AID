@@ -71,14 +71,23 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
         }
         self.response.write(template.render(template_vars))
 
-
-
-
-class SelectCollegeHandler(webapp2.RequestHandler):
+class PopulateDataBase(webapp2.RequestHandler):
     def get(self):
-        template = jinja_env.get_template('SelectCollege.html')
-        self.response.write(template.render())
+        uc_berkley = College(college_name = "UC Berkley", tuition = 14254, housing = 17220, food = 1644, books = 870, student = student_key).put()
+        redirect
 
+class PreCodedCollegeHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_env.get_template('templates/SelectCollege.html')
+        college_list = College.query().filter(College.student==student_key)
+
+        template_vars ={
+        "college" : college_list,
+        "logout_url": users.create_logout_url('/')
+
+        }
+
+        self.response.write(template.render(template_vars))
 
 
 

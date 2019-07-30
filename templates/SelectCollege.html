@@ -6,10 +6,13 @@
     <title></title>
   </head>
   <body>
+
     <form class="" action="index.html" method="post">
+      {% for colleges in college %}
       <ul>
       <li><input type="checkbox" name="{{colleges.name}}">{{colleges.name}}</li>
       </ul>
+      {% endfor %}
     </form>
 
   </body>

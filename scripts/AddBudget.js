@@ -7,6 +7,7 @@ for(let total_element of total_elements){
       total_element.classList.add("isInBudget");
   }
   else{
+    //make red
     total_element.classList.add("isNotInBudget");
   }
 }
