@@ -9,28 +9,23 @@ from google.appengine.api import users
 #college model
 class College(ndb.Model):
     college_name = ndb.StringProperty(required = True)
-    tuition = ndb.IntegerProperty(required = True)
-    housing = ndb.IntegerProperty(required = True)
-    food = ndb.IntegerProperty(required = True)
-    books = ndb.IntegerProperty(required = True)
+    tuition = ndb.IntegerProperty(required = False, default = 0)
+    housing = ndb.IntegerProperty(required = False, default = 0)
+    food = ndb.IntegerProperty(required = False, default = 0)
+    books = ndb.IntegerProperty(required = False, default = 0)
 
 
 
-#creating database
-class PopulateDataBase(webapp2.RequestHandler):
-    # def get(self):
-    #     boston_universiy = College(college_name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
-    #     boston_universiy = College(college_name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
 
-    def post(self):
-
-        College(college_name = self.request.get("college_name"), tuition = int(self.request.get("tuition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
-
-        self.redirect("/", True)
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('templates/AddCollege.html')
         self.response.write(template.render())
+
+    def post(self):
+        College(college_name = self.request.get("college_name"), tuition = int(self.request.get("tuition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
+
+        self.redirect("/", True)
 #Page for adding colleges to the user's "college shopping list"
 # class BudgetHandler(webapp2.RequestHandler):
 #     def get(self):
@@ -38,19 +33,13 @@ class AddCollegeHandler(webapp2.RequestHandler):
 
 #accesses the spreadsheet for now
 class CollegeSelectorHandler(webapp2.RequestHandler):
-
     def get(self):
         college_list = College.query().fetch()
-        template = jinja_env.get_template('MainPage.html')
+        template = jinja_env.get_template('templates/MainPage.html')
 
         template_vars ={
             "college": college_list,
-            # "college_name": self.request.get("college_name"),
-            # "housing": self.request.get("housing"),
-            # "travel": self.request.get("travel"),
-            # "tuition": self.request.get("tuition"),
-            # "food": self.request.get("food"),
-            # "books": self.request.get("books"),
+
         }
         self.response.write(template.render())
 
@@ -74,8 +63,7 @@ jinja_env = jinja2.Environment(
 )
 app = webapp2.WSGIApplication([
     ('/', CollegeSelectorHandler),
-    ('/populateDatabase', PopulateDataBase),
-    ('/addCollege', AddCollegeHandler),
+    ('/add_college', AddCollegeHandler),
     ('/addBudget', BudgetHandler),
      # ('/', ComparisonHandler),
 

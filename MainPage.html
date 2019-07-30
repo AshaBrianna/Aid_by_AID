@@ -8,44 +8,18 @@
       href="stylesheets/aid_by_AID.css">
   </head>
   <body>
-    <h4>(USERS NAME), financially, your best option appears to be..(SCHOOL NAME W LOWEST NET COST)</h4>
-      <table id="...">
-
-        <tr>
-          {% for colleges in college %}
-          <th scope="col" id="...">College Name: {{colleges.college_name}} </th>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Tuition: {{colleges.tuition}}</td>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Housing: {{colleges.housing}}</td>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Food: {{colleges.food}}</td>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Travel: {{colleges.travel}}</td>
-          {% endfor %}
-        </tr>
-
-    </tbody>
-  </table>
-
-
-
+    <h1>(USERS NAME), financially, your best option appears to be..(SCHOOL NAME W LOWEST NET COST)</h1>
+    (SPREADSHEET STYLE LIST OF COLLEGES AND CATEGORICAL COSTS goes here)
+    {% for colleges in college %}
+    <ul>
+    <li>College Name: {{colleges.college_name}}</li>
+    <li>Tuition: {{colleges.tuition}}</li>
+    <li>Housing: {{colleges.housing}}</li>
+    <li>Food: {{colleges.food}}</li>
+    <li>Travel:{{colleges.travel}}</li>
+    <li>Books: {{colleges.books}}</li>
+    </ul>
+    {% endfor %}
     <br>
     <br>
 
