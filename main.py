@@ -26,7 +26,7 @@ class PopulateDataBase(webapp2.RequestHandler):
 
         College(college_name = self.request.get("college_name"), tuition = int(self.request.get("tuition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
 
-        self.redirect("/selectCollege", True)
+        self.redirect("/", True)
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('AddCollege.html')
@@ -36,7 +36,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
 #     def get(self):
 #         template = jinja_env.get_template('AddBudget.html')
 
-
+#accesses the spreadsheet for now
 class CollegeSelectorHandler(webapp2.RequestHandler):
 
     def get(self):
@@ -66,7 +66,7 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 app = webapp2.WSGIApplication([
-    ('/selectCollege', CollegeSelectorHandler),
+    ('/', CollegeSelectorHandler),
     ('/populateDatabase', PopulateDataBase),
     ('/addCollege', AddCollegeHandler),
     # ('/addBudget', BudgetHandler),
