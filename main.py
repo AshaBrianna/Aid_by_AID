@@ -23,6 +23,12 @@ class College(ndb.Model):
     books = ndb.IntegerProperty(required = False, default = 0)
     student = ndb.KeyProperty(Student)
 
+class CreateProfile(webapp2.RequestHandler):
+
+    def get(self):
+
+        template = jinja_env.get_template('templates/StudentProfile.html')
+        self.response.write(template.render())
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
@@ -65,12 +71,7 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
         }
         self.response.write(template.render(template_vars))
 
-class BudgetHandler(webapp2.RequestHandler):
 
-    def get(self):
-
-        template = jinja_env.get_template('AddBudget.html')
-        self.response.write(template.render())
 
 
 class SelectCollegeHandler(webapp2.RequestHandler):
@@ -87,7 +88,7 @@ jinja_env = jinja2.Environment(
 app = webapp2.WSGIApplication([
     ('/', CollegeSelectorHandler),
     ('/add_college', AddCollegeHandler),
-    ('/addBudget', BudgetHandler),
+    ('/AddStudent', CreateProfile),
      # ('/', ComparisonHandler),
 
 
