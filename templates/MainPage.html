@@ -19,31 +19,31 @@
 
         <tr>
           {% for colleges in college %}
-          <td id= "tuition">Tuition: {{colleges.tuition}}</td>
+          <td>Tuition: {{colleges.tuition}}</td>
           {% endfor %}
         </tr>
 
         <tr>
           {% for colleges in college %}
-          <td id= "housing">Housing: {{colleges.housing}}</td>
+          <td>Housing: {{colleges.housing}}</td>
           {% endfor %}
         </tr>
 
         <tr>
           {% for colleges in college %}
-          <td id= "food">Food: {{colleges.food}}</td>
+          <td>Food: {{colleges.food}}</td>
           {% endfor %}
         </tr>
 
         <tr>
           {% for colleges in college %}
-          <td id= "travel">Travel: {{colleges.travel}}</td>
+          <td>Travel: {{colleges.travel}}</td>
           {% endfor %}
         </tr>
         <tr>
           {% for colleges in college %}
           {% set total = colleges['tuition'] + colleges['housing'] + colleges['food']%}
-          <td id= "total">Total: {{total}}</td>
+          <td data-total = "{{total}}">Total: {{total}}</td>
           {% endfor %}
         </tr>
     </tbody>
