@@ -6,6 +6,13 @@ import webapp2
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
+class Student(ndb.Model):
+    home_location = ndb.StringProperty(required = True)
+    budget = ndb.IntegerProperty(required = False, default = 0)
+    prospective_colleges = ndb.StringProperty(required = False, default = 0)
+    grants = ndb.IntegerProperty(required = False, default = 0)
+    emails = ndb.StringProperty(required = True, default = 0)
+     
 #college model
 class College(ndb.Model):
     college_name = ndb.StringProperty(required = True)
@@ -14,13 +21,7 @@ class College(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
 
-class Student(ndb.Model):
-    home_location = ndb.StringProperty(required = True)
-    budget = ndb.IntegerProperty(required = False, default = 0)
-    prospective_colleges = ndb.StringProperty(required = False, default = 0)
-    grants = ndb.IntegerProperty(required = False, default = 0)
-    emails = ndb.StringProperty(required = True, default = 0)
-     
+
 
 
 
