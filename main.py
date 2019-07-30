@@ -29,7 +29,7 @@ class PopulateDataBase(webapp2.RequestHandler):
         self.redirect("/", True)
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_env.get_template('templates/AddCollege.html')
+        template = jinja_env.get_template('AddCollege.html')
         self.response.write(template.render())
 #Page for adding colleges to the user's "college shopping list"
 # class BudgetHandler(webapp2.RequestHandler):
@@ -41,7 +41,7 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
 
     def get(self):
         college_list = College.query().fetch()
-        template = jinja_env.get_template('templates/MainPage.html')
+        template = jinja_env.get_template('MainPage.html')
 
         template_vars ={
             "college": college_list,
@@ -52,23 +52,15 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
             # "food": self.request.get("food"),
             # "books": self.request.get("books"),
         }
+        self.response.write(template.render())
 
-# class BudgetHandler(webapp2.RequestHandler):
-#
-#     def get(self):
-#         college_list = College.query().fetch()
-#         template = jinja_env.get_template('MainPage.html')
-#
-#         template_vars ={
-#             "college": college_list,
-#             # "college_name": self.request.get("college_name"),
-#             # "housing": self.request.get("housing"),
-#             # "travel": self.request.get("travel"),
-#             # "tuition": self.request.get("tuition"),
-#             # "food": self.request.get("food"),
-#             # "books": self.request.get("books"),
-#         }
-#         self.response.write(template.render(template_vars))
+class BudgetHandler(webapp2.RequestHandler):
+
+    def get(self):
+
+        template = jinja_env.get_template('AddBudget.html')
+        self.response.write(template.render())
+
 #
 # class ComparisonHandler(webapp2.RequestHandler):
 #      def get(self):
