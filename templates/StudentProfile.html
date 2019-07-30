@@ -10,21 +10,31 @@
   <script type="text/javascript" src="scripts/StudentProfile.js">
   </script>
   <body>
-    <h1>ADD YOUR BUDGET</h1>
-    <p> Please enter how much you can afford to pay per year for your undergraduate education. Do not include the dollar sign ($) in your entry or any commas (,) in the figure.</p>
+    <h1>ADD YOUR PROFILE</h1>
+    <p> Please enter your profile information below</p>
     <br>
     <div class="container">
       <form method="post" action="/">
 
           <div class="row">
             <div class="col-25">
-              <label for="name">B U D G E T :</label>
+              <label for="name"> P R O F I L E :</label>
             </div>
-            <div class="col-75">
-              <input type="text" id="name" name="student_name" placeholder="Your name...">
+            <div class="flex-student-name">
+              <input type="text" id="profile_name" name="student_name" placeholder="Student's name...">
+            </div>
+            <div class="flex-student-budget">
+              <input type="text" id="profile_budget" name="student_budget" placeholder="Student's budget...">
+            </div>
+            <div class="flex-student-rows">
+              <input type="text" id="home_location" name="students location" placeholder="Student's location...">
+              <input type="text" id="budget" name="budget" placeholder="Student's budget...">
+            </div>
+            <div class="flex-student-rows1">
+              <input type="text" id="grants" name="Any and all Grants" placeholder="Student's grants...">
+              <input type="text" id="email" name="email" placeholder="Student's email...">
             </div>
         </div>
-
 
         <div class="row">
           <input type="submit" value="S U B M I T">
