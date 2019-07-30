@@ -23,6 +23,13 @@ class College(ndb.Model):
     books = ndb.IntegerProperty(required = False, default = 0)
     student = ndb.KeyProperty(Student)
 
+class PreLoadedCollege(ndb.Model):
+    college_name = ndb.StringProperty(required = True)
+    tuition = ndb.IntegerProperty(required = False, default = 0)
+    housing = ndb.IntegerProperty(required = False, default = 0)
+    food = ndb.IntegerProperty(required = False, default = 0)
+    books = ndb.IntegerProperty(required = False, default = 0)
+
 class CreateProfile(webapp2.RequestHandler):
 
     def get(self):
@@ -73,22 +80,42 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
 
 class PopulateDataBase(webapp2.RequestHandler):
     def get(self):
-        uc_berkley = College(college_name = "UC Berkley", tuition = 14254, housing = 17220, food = 1644, books = 870, student = student_key).put()
-        redirect
+        uc_berkley = PreLoadedCollege(college_name = "UC Berkley", tuition = 14254, housing = 17220, food = 1644, books = 870).put()
+        uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400).put()
+        uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159).put()
+        self.redirect('/', True)
 
 class PreCodedCollegeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('templates/SelectCollege.html')
-        college_list = College.query().filter(College.student==student_key)
-
-        template_vars ={
+        college_list = PreLoadedCollege.query().fetch()
+        template_vars = {
         "college" : college_list,
-        "logout_url": users.create_logout_url('/')
-
+        "logout_url": users.create_logout_url('/'),
         }
 
         self.response.write(template.render(template_vars))
 
+    def post(self):
+        college_list = PreLoadedCollege.query().fetch()
+        for college in college_list:
+            selected = self.request.get(college.college_name)
+            if selected:
+                current_user = users.get_current_user()
+                student_key = Student.query().filter(Student.email == current_user.email()).get().key
+                College(
+                    college_name = college.college_name,
+                    tuition = college.tuition,
+                    housing = college.housing,
+                    food = college.food,
+                    books = college.books,
+                    student = student_key,
+                ).put()
+
+
+
+
+        self.redirect('/', True)
 
 
 jinja_env = jinja2.Environment(
@@ -98,6 +125,8 @@ app = webapp2.WSGIApplication([
     ('/', CollegeSelectorHandler),
     ('/add_college', AddCollegeHandler),
     ('/AddStudent', CreateProfile),
+    ('/populateDatabase', PopulateDataBase),
+    ('/college_list', PreCodedCollegeHandler),
      # ('/', ComparisonHandler),
 
 
