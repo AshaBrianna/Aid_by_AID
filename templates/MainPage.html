@@ -10,47 +10,36 @@
   <body>
     <a href="{{logout_url}}">LOGOUT</a>
     <h4>(USERS NAME), financially, your best option appears to be..(SCHOOL NAME W LOWEST NET COST)</h4>
-      <table id="college_table" border=".5">
 
-        <tr>
+    <div class="tbl-header">
+      <table id="college_table">
+        <thead>
+          <tr>
+            <th>School</th>
+            <th>Tuition</th>
+            <th>Housing</th>
+            <th>Food</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <div class="tbl-content">
+      <table>
+        <tbody>
           {% for colleges in college %}
-          <th scope="col" id="college_table">College Name: {{colleges.college_name}} </th>
+            <tr>
+              <td class="schoolname"><b>{{colleges.college_name}}</b></td>
+              <td>${{colleges.tuition}}</td>
+              <td>${{colleges.housing}}</td>
+              <td>${{colleges.food}}</td>
+              <td>${{colleges.travel}}</td>
+            </tr>
           {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Tuition: {{colleges.tuition}}</td>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Housing: {{colleges.housing}}</td>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Food: {{colleges.food}}</td>
-          {% endfor %}
-        </tr>
-
-        <tr>
-          {% for colleges in college %}
-          <td>Travel: {{colleges.travel}}</td>
-          {% endfor %}
-        </tr>
-        <tr>
-          {% for colleges in college %}
-          {% set total = colleges['tuition'] + colleges['housing'] + colleges['food']%}
-          <td class = "total" data-total = "{{total}}">Total: {{total}}</td>
-          {% endfor %}
-        </tr>
-    </tbody>
-  </table>
-
-
+          <script type="text/javascript" src="/scripts/MainPage.js">
+          </script>
+        </tbody>
     <br>
     <br>
 
@@ -62,11 +51,5 @@
       <a href="/AddStudent" > ADD/EDIT YOUR PROFILE </a>
     </div>
 
-    <br>
-    <br>
-  <script type="text/javascript" src = "/scripts/MainPage.js">
-
-  </script>
-  </body>
 
 </html>
