@@ -72,11 +72,12 @@ class BudgetHandler(webapp2.RequestHandler):
         template = jinja_env.get_template('AddBudget.html')
         self.response.write(template.render())
 
-#
-# class ComparisonHandler(webapp2.RequestHandler):
-#      def get(self):
-#         template = jinja_env.get_template('Comparison.html')
-#         self.response.write(template.render())
+
+class SelectCollegeHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_env.get_template('SelectCollege.html')
+        self.response.write(template.render())
+
 
 
 
