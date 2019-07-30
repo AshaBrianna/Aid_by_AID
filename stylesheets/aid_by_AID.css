@@ -123,6 +123,14 @@ label
 {
   white-space: nowrap;
 }
+.isInBudget
+{
+  background-color: green;
+}
+.isNotInBudget
+{
+  background-color: red;
+}
 
 
 /* Changed ID from ... to college_table */
