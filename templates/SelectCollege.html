@@ -7,12 +7,13 @@
   </head>
   <body>
 
-    <form class="" action="index.html" method="post">
+    <form class="" action="/college_list" method="POST">
       {% for colleges in college %}
       <ul>
-      <li><input type="checkbox" name="{{colleges.name}}">{{colleges.name}}</li>
+      <li><input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
       </ul>
       {% endfor %}
+      <input type="submit" name="" value="done">
     </form>
 
   </body>
