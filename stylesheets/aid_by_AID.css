@@ -37,8 +37,14 @@ input[type=text], select, textarea {
   padding: 12px;
   border: 1px solid peru;
   border-radius: 4px;
+
   resize: vertical;
+<<<<<<< HEAD
+  resize: horizontal;
+}
+=======
   }
+>>>>>>> 8dfa6939d2e77410c8ff70710d932dfe8c930ef8
 
 label {
   padding: 12px 12px 12px 0;
@@ -65,17 +71,47 @@ input[type=submit]:hover {
   padding: 20px;
   }
 
+#profile_name {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
+.flex-student-name {
+display: flex;
+width: 100%;
+}
+
+.flex-student-budget {
+display: flex;
+width: 100%;
+}
+
+.flex-student-rows1 {
+display: flex;
+flex-direction: row-reverse;
+}
+
+.flex-student-rows {
+display: flex;
+flex-direction: row;
+}
+
 .col-25 {
   float: left;
   width: 25%;
   margin-top: 6px;
   }
 
+<<<<<<< HEAD
+
+=======
 .col-75 {
   float: left;
   width: 75%;
   margin-top: 6px;
   }
+>>>>>>> 8dfa6939d2e77410c8ff70710d932dfe8c930ef8
 
 .row:after {
   content: "";
