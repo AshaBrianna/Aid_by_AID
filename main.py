@@ -14,15 +14,21 @@ class Student(ndb.Model):
     emails = ndb.StringProperty(required = True, default = 0)
      
 #college model
+
+class Student(ndb.Model):
+    home_location = ndb.StringProperty(required = True)
+    budget = ndb.IntegerProperty(required = False, default = 0)
+    prospective_colleges = ndb.StringProperty(required = False)
+    grants = ndb.IntegerProperty(required = False, default = 0)
+    email = ndb.StringProperty(required = True)
+
 class College(ndb.Model):
     college_name = ndb.StringProperty(required = True)
     tuition = ndb.IntegerProperty(required = False, default = 0)
     housing = ndb.IntegerProperty(required = False, default = 0)
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
-
-
-
+    student = ndb.KeyProperty(Student)
 
 
 class AddCollegeHandler(webapp2.RequestHandler):
@@ -31,18 +37,33 @@ class AddCollegeHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
-        College(college_name = self.request.get("college_name"), tuition = int(self.request.get("tuition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
+        current_user = users.get_current_user()
+        student_key = Student.query().filter(Student.email == current_user.nickname()).get().key
+        College(
+            college_name = self.request.get("college_name"),
+            tuition = int(self.request.get("tuition")),
+            housing = int(self.request.get("housing")),
+            food = int(self.request.get("food")),
+            books = int(self.request.get("books")),
+            student = student_key,
+        ).put()
+
 
         self.redirect("/", True)
-#Page for adding colleges to the user's "college shopping list"
-# class BudgetHandler(webapp2.RequestHandler):
-#     def get(self):
-#         template = jinja_env.get_template('AddBudget.html')
 
 #accesses the spreadsheet for now
 class CollegeSelectorHandler(webapp2.RequestHandler):
     def get(self):
-        college_list = College.query().fetch()
+        #check if logged in user has a student in datastore, if yes get their key,
+        #if not, add a new student to datastore
+        current_user = users.get_current_user()
+        student = Student.query().filter(Student.email == current_user.nickname()).get()
+        if student == None:
+            #TODO if a user does not have a student instance, redirect them to profile creation page
+            student_key = Student(home_location = "home", email = current_user.nickname()).put()
+        else:
+            student_key = student.key
+        college_list = College.query().filter(College.student==student_key)
         template = jinja_env.get_template('templates/MainPage.html')
 
         template_vars ={
