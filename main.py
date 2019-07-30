@@ -9,10 +9,10 @@ from google.appengine.api import users
 #college model
 class College(ndb.Model):
     college_name = ndb.StringProperty(required = True)
-    tuition = ndb.IntegerProperty(required = True)
-    housing = ndb.IntegerProperty(required = True)
-    food = ndb.IntegerProperty(required = True)
-    books = ndb.IntegerProperty(required = True)
+    tuition = ndb.IntegerProperty(required = False, default = 0)
+    housing = ndb.IntegerProperty(required = False, default = 0)
+    food = ndb.IntegerProperty(required = False, default = 0)
+    books = ndb.IntegerProperty(required = False, default = 0)
 
 
 
@@ -38,19 +38,13 @@ class AddCollegeHandler(webapp2.RequestHandler):
 
 #accesses the spreadsheet for now
 class CollegeSelectorHandler(webapp2.RequestHandler):
-
     def get(self):
         college_list = College.query().fetch()
-        template = jinja_env.get_template('MainPage.html')
+        template = jinja_env.get_template('templates/MainPage.html')
 
         template_vars ={
             "college": college_list,
-            # "college_name": self.request.get("college_name"),
-            # "housing": self.request.get("housing"),
-            # "travel": self.request.get("travel"),
-            # "tuition": self.request.get("tuition"),
-            # "food": self.request.get("food"),
-            # "books": self.request.get("books"),
+
         }
         self.response.write(template.render())
 
