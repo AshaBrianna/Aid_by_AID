@@ -39,12 +39,7 @@ input[type=text], select, textarea {
   border-radius: 4px;
 
   resize: vertical;
-<<<<<<< HEAD
-  resize: horizontal;
-}
-=======
   }
->>>>>>> 8dfa6939d2e77410c8ff70710d932dfe8c930ef8
 
 label {
   padding: 12px 12px 12px 0;
@@ -108,7 +103,7 @@ flex-direction: row;
   width: 75%;
   margin-top: 6px;
   }
-  
+
 .row:after {
   content: "";
   display: table;
