@@ -7,8 +7,8 @@ handlers:
   static_dir: stylesheets
 - url: /images
   static_dir: images
-- url: /js
-  static_dir: js
+- url: /scripts
+  static_dir: scripts
 - url: /.*
   script: main.app
   login: required
