@@ -38,10 +38,10 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/MainPage.html')
 
         template_vars ={
-            "college": college_list,
+            "college" : college_list,
 
         }
-        self.response.write(template.render())
+        self.response.write(template.render(template_vars))
 
 class BudgetHandler(webapp2.RequestHandler):
 
