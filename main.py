@@ -14,27 +14,20 @@ class College(ndb.Model):
     food = ndb.IntegerProperty(required = True)
     books = ndb.IntegerProperty(required = True)
 
-class UserColleges(ndb.Model):
-    user_name = ndb.StringProperty(required = True)
-    user_tuition = ndb.IntegerProperty(required = True)
-    user_housing = ndb.IntegerProperty(required = True)
-    user_food = ndb.IntegerProperty(required = True)
-    user_books = ndb.IntegerProperty(required = True)
-# class UserInfo(ndb.Model):
-#     user_budget = ndb.IntegerProperty(required = Tre
+
 
 #creating database
 class PopulateDataBase(webapp2.RequestHandler):
-    def get(self):
-        boston_universiy = College(college_name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
-        boston_universiy = College(college_name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
+    # def get(self):
+    #     boston_universiy = College(college_name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
+    #     boston_universiy = College(college_name = "Boston University", tuition = 54720, housing = 10680, food = 5480, books = 1000).put()
 
     def post(self):
 
         College(college_name = self.request.get("college_name"), tuition = int(self.request.get("tuition")), housing = int(self.request.get("housing")), food = int(self.request.get("food")), books = int(self.request.get("books"))).put()
 
         self.redirect("/selectCollege", True)
-class AddColegeHandler(webapp2.RequestHandler):
+class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('AddCollege.html')
         self.response.write(template.render())
@@ -75,7 +68,7 @@ jinja_env = jinja2.Environment(
 app = webapp2.WSGIApplication([
     ('/selectCollege', CollegeSelectorHandler),
     ('/populateDatabase', PopulateDataBase),
-    ('/addCollege', AddColegeHandler),
+    ('/addCollege', AddCollegeHandler),
     # ('/addBudget', BudgetHandler),
      # ('/', ComparisonHandler),
 

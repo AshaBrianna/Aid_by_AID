@@ -10,7 +10,7 @@
   <body>
     <h1>(USERS NAME), financially, your best option appears to be..(SCHOOL NAME W LOWEST NET COST)</h1>
     (SPREADSHEET STYLE LIST OF COLLEGES AND CATEGORICAL COSTS goes here)
-       {% for colleges in college %}
+    {% for colleges in college %}
     <ul>
     <li>College Name: {{colleges.college_name}}</li>
     <li>Tuition: {{colleges.tuition}}</li>
@@ -22,13 +22,17 @@
     {% endfor %}
     <br>
     <br>
+
     <div class="button">
-      <a href="/" > ADD/EDIT A COLLEGE </a>
+      <a href="/addCollege" > ADD/EDIT A COLLEGE </a>
     </div>
+
     <div class="button">
       <a href="/AddBudget" > ADD/EDIT YOUR BUDGET </a>
     </div>
+
     <br>
     <br>
   </body>
+
 </html>

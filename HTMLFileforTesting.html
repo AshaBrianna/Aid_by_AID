@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>List of colleges</h1>
+    <form class="" action = "/Compare">
+
+
+    {% for colleges in college %}
+    <ul>
+      <input type = "checkbox" name = "college">College: {{colleges.name}}</li>
+    </ul>
+    {% endfor %}
+     <input type="submit" name="submit" value = "Add College">
+    </form>
+
+  </body>
+</html>
