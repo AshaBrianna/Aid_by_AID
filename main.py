@@ -29,7 +29,7 @@ class PopulateDataBase(webapp2.RequestHandler):
         self.redirect("/", True)
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_env.get_template('AddCollege.html')
+        template = jinja_env.get_template('templates/AddCollege.html')
         self.response.write(template.render())
 #Page for adding colleges to the user's "college shopping list"
 # class BudgetHandler(webapp2.RequestHandler):
@@ -58,7 +58,7 @@ class BudgetHandler(webapp2.RequestHandler):
 
     def get(self):
 
-        template = jinja_env.get_template('AddBudget.html')
+        template = jinja_env.get_template('templates/AddBudget.html')
         self.response.write(template.render())
 
 #
