@@ -1,5 +1,5 @@
 let total_elements = document.querySelectorAll(".total");
-let budget = 1000;
+let budget = document.querySelctor("#budget").value;
 for(let total_element of total_elements){
   let int_total = parseInt(total_element.dataset['total']);
   if(int_total < budget){
