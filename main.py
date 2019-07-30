@@ -31,7 +31,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
 
     def post(self):
         current_user = users.get_current_user()
-        student_key = Student.query().filter(Student.email == current_user.nickname()).get().key
+        student_key = Student.query().filter(Student.email == current_user.email()).get().key
         College(
             college_name = self.request.get("college_name"),
             tuition = int(self.request.get("tuition")),
@@ -41,7 +41,6 @@ class AddCollegeHandler(webapp2.RequestHandler):
             student = student_key,
         ).put()
 
-
         self.redirect("/", True)
 
 #accesses the spreadsheet for now
@@ -50,10 +49,10 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
         #check if logged in user has a student in datastore, if yes get their key,
         #if not, add a new student to datastore
         current_user = users.get_current_user()
-        student = Student.query().filter(Student.email == current_user.nickname()).get()
+        student = Student.query().filter(Student.email == current_user.email()).get()
         if student == None:
             #TODO if a user does not have a student instance, redirect them to profile creation page
-            student_key = Student(home_location = "home", email = current_user.nickname()).put()
+            student_key = Student(home_location = "home", email = current_user.email()).put()
         else:
             student_key = student.key
         college_list = College.query().filter(College.student==student_key)
@@ -61,6 +60,7 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
 
         template_vars ={
             "college" : college_list,
+            "logout_url": users.create_logout_url('/')
 
         }
         self.response.write(template.render(template_vars))
