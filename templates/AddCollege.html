@@ -8,19 +8,11 @@
       href="stylesheets/aid_by_AID.css">
   </head>
   <body>
-    <div class="header">
-      <img src="stylesheets/logo.png" height = 70px>
-      <p>Your Personal College Financial Planner</p>
-      <a class = "myButton" href="/" > HOME </a>
-      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
-      <a class = "myButton" href="/add_college" > + COLLEGE </a>
-      <a class = "myButton" href="/AddStudent" > + PROFILE </a>
-    </div>
+    <h1>ADD A NEW COLLEGE</h1>
+    <p>Please enter the college's name and associated annual costs below. Do not include the dollar sign ($) in your entry. Feel free to also use the notes section to include any personal notes or reminders relevant to the specified college:</p>
     <br>
-    <br>
+
     <div class="container">
-      <h1>ADD A NEW COLLEGE</h1>
-      <p class="instructions"><i>Please enter the college's name and associated annual costs below. Do not include the dollar sign ($) in your entry. Feel free to also use the notes section to include any personal notes or reminders relevant to the specified college:</i></p>
       <form method="POST" action="/add_college">
 
           <div class="row">
@@ -29,6 +21,15 @@
             </div>
             <div class="col-75">
               <input type="text" id="name" name="college_name" placeholder="College/University name...">
+            </div>
+          </div>
+  <br>
+          <div class="row">
+            <div class="col-25">
+              <label for="name">C O L L E G E   L O C A T I O N:</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="location" name="college_location" placeholder="College/University location...">
             </div>
           </div>
 <br>
@@ -86,7 +87,7 @@
           </div>
         </div>
     </div>
-<br>
+
         <div class="row">
           <input type="submit" value="S U B M I T">
         </div>

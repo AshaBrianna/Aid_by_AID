@@ -2,15 +2,18 @@ import jinja2
 import logging
 import os
 import webapp2
-<<<<<<< HEAD
 import json
-=======
 import time
+import urllib
 
->>>>>>> 9ae7892a4c3d65202930e9e4bf7d2c983313531c
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
+from google.appengine.api import urlfetch
+
+jinja_env = jinja2.Environment(
+    loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
+)
 
 class Student(ndb.Model):
     home_location = ndb.StringProperty(required = True)
@@ -51,9 +54,9 @@ class CreateProfile(webapp2.RequestHandler):
                 grants = int(self.request.get("grants")),
                 email = current_user.email()
                 ).put()
+        self.redirect("/?student_key=%s" % student_key.urlsafe(), True)
         #time.sleep(.3)
 
-        self.redirect("/?student_key=%s" % student_key.urlsafe(), True)
 
     # def post(self):
 
@@ -67,12 +70,39 @@ class AddCollegeHandler(webapp2.RequestHandler):
     def post(self):
         current_user = users.get_current_user()
         student_key = Student.query().filter(Student.email == current_user.email()).get().key
+        base_url= "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/SFO-sky/LAX-sky/2019-09-01?inboundpartialdate=2019-12-01"
+        full_url = base_url + '?' + urllib.urlencode(
+                {
+          "inboundDate": "2019-09-10",
+          "cabinClass": "business",
+          "children": 0,
+          "infants": 0,
+          "country": "US",
+          "currency": "USD",
+          "locale": "en-US",
+          "originPlace": student_key.get().home_location,
+          "destinationPlace": student_key.get().college_location,
+          "outboundDate": "2019-09-01",
+          "adults": 1
+            }
+          )
+        flights_response = urlfetch.fetch(
+        full_url,
+          headers={
+            "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+            "X-RapidAPI-Key": "3b06a903famshe856af999ade62ap14f722jsnfb9f1e392c75"
+          },
+
+        )
+        flights_dictionary = json.loads(flights_response.content)
         College(
             college_name = self.request.get("college_name"),
+            college_location = self.request.get("college_location"),
             tuition = int(self.request.get("tuition")),
             housing = int(self.request.get("housing")),
             food = int(self.request.get("food")),
             books = int(self.request.get("books")),
+            travel = int(flights_dictionary["Quotes"][0]["MinPrice"]),
             student = student_key,
         ).put()
 
@@ -143,44 +173,8 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
 
         self.redirect('/', True)
 
-def Flights(Student, College):
-    flights_response = unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/SFO-sky/LAX-sky/2019-09-01?inboundpartialdate=2019-12-01",
-      headers={
-        "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-        "X-RapidAPI-Key": "3b06a903famshe856af999ade62ap14f722jsnfb9f1e392c75"
-      },
-      params={
-        "inboundDate": "2019-09-10",
-        "cabinClass": "business",
-        "children": 0,
-        "infants": 0,
-        "country": "US",
-        "currency": "USD",
-        "locale": "en-US",
-        "originPlace": Student.home_location,
-        "destinationPlace": College.college_location,
-        "outboundDate": "2019-09-01",
-        "adults": 1
-      }
-    )
-    flights_dictionary = json.loads(flights_response.raw_body)
-    # What the flight dictionary contains
-    # print 'flights_dictionary', flights_dictionary
-    template_vars = {
-        'prices': flights_dictionary[Quotes],
-    }
-
-    template = jinja_env.get_template('templates/StudentProfile.html')
-    self.response.write(template.render(template_vars))
-
-# Flights(['params'][originPlace]JFK, ['params']"LAX")
-
-Flights()
 
 
-jinja_env = jinja2.Environment(
-    loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
-)
 app = webapp2.WSGIApplication([
     ('/', CollegeSelectorHandler),
     ('/add_college', AddCollegeHandler),
