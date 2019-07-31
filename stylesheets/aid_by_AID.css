@@ -210,11 +210,12 @@ label{
   }
 
 .isInBudget {
-  background-color: green;
+  background-color: rgba(0, 128, 0, .4);
   }
 
 .isNotInBudget{
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.4);
+;
  }
 
  h1{
