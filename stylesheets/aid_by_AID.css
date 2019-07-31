@@ -25,7 +25,7 @@ body {
   border-radius: 0em; */
   background: CornSilk;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
-  margin: 40px;
+  margin: 60px;
   }
 
 p {
@@ -67,7 +67,8 @@ input[type=submit]:hover {
 .container {
   border-radius: 5px;
   background-color: BlanchedAlmond;
-  padding: 20px;
+  padding: 2px;
+  border: 2px solid white;
   }
 
 #profile_name {
@@ -147,10 +148,6 @@ label{
   background-color: red;
  }
 
-
-
-
-
  h1{
    font-size: 30px;
    color: peru;
@@ -200,7 +197,7 @@ label{
  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
  body{
    background: -webkit-linear-gradient(left, white, Cornsilk);
-   background: linear-gradient(to bottom, white, Cornsilk);
+   background: linear-gradient(to bottom, white, wheat);
    font-family: 'Roboto', sans-serif;
  }
  section{
