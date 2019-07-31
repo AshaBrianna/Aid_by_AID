@@ -9,8 +9,8 @@
   </head>
   <body>
     <div class="header">
-      <img src="stylesheets/logo.png" height = 70px>
-      <p>Your Personal College Financial Planner</p>
+      <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 70px>
+      <p class= "logo" >Your Personal College Financial Planner</p>
       <a class = "myButton" href="/" > HOME </a>
       <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
       <a class = "myButton" href="/add_college" > + COLLEGE </a>
@@ -18,6 +18,8 @@
     </div>
     <br>
     <br>
+  <div class="spreadsheet">
+    </div>
     <div class="tbl-header">
       <table id="college_table">
         <thead>
@@ -27,6 +29,7 @@
             <th>Housing</th>
             <th>Food</th>
             <th>Travel</th>
+            <th>Books</th>
             <th>Total</th>
           </tr>
         </thead>
@@ -43,7 +46,8 @@
               <td>${{colleges.housing}}</td>
               <td>${{colleges.food}}</td>
               <td>${{colleges.travel}}</td>
-              <td class = "total">{% set total = colleges['tuition'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
+              <td>${{colleges.books}}</td>
+              <td class = "total">{% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
             </tr>
           {% endfor %}
           <script type="text/javascript" src="/scripts/MainPage.js">
@@ -51,6 +55,7 @@
         </tbody>
       </table>
     </div>
+  </div>
     <br>
     <br>
 

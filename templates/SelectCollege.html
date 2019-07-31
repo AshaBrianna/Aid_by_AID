@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href = "aid_by_AID.css">
+    <link rel="stylesheet" href = "stylesheets/aid_by_AID.css">
     <meta charset="utf-8">
     <title></title>
   </head>
+  <div class="header">
+    <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 70px>
+    <p class= "logo" >Your Personal College Financial Planner</p>
+    <a class = "myButton" href="/" > HOME </a>
+    <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
+    <a class = "myButton" href="/add_college" > + COLLEGE </a>
+    <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+  </div>
   <body>
-    <div class="header"><img src="stylesheets/logo.png" height = 100px></div>
-
-
     <form class="" action="/college_list" method="POST">
+    <form class="" action="/preloaded_colleges" method="POST">
+      <div class="container">
       {% for colleges in college %}
       <ul>
       <li><input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
       </ul>
       {% endfor %}
       <input type="submit" name="" value="done">
+      </div>
     </form>
 
   </body>

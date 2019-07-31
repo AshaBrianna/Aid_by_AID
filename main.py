@@ -30,6 +30,7 @@ class College(ndb.Model):
     books = ndb.IntegerProperty(required = False, default = 0)
     college_location = ndb.StringProperty(required = False)
     student = ndb.KeyProperty(Student)
+    #college_location = ndb.StringProperty(required = True)
 
 class PreLoadedCollege(ndb.Model):
     college_name = ndb.StringProperty(required = True)
@@ -54,13 +55,9 @@ class CreateProfile(webapp2.RequestHandler):
                 grants = int(self.request.get("grants")),
                 email = current_user.email()
                 ).put()
-        self.redirect("/?student_key=%s" % student_key.urlsafe(), True)
-        #time.sleep(.3)
+        student_budget = self.request.get("budget")
 
-
-    # def post(self):
-
-
+        self.redirect("/?student_key=%s&student_budget=%s" % (student_key.urlsafe(), student_budget), True)
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
@@ -111,7 +108,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
         self.redirect("/", True)
 
 #accesses the spreadsheet for now
-class CollegeSelectorHandler(webapp2.RequestHandler):
+class MainPageHandler(webapp2.RequestHandler):
     def get(self):
         #check if logged in user has a student in datastore, if yes get their key,
         #if not, add a new student to datastore
@@ -176,11 +173,11 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', CollegeSelectorHandler),
+    ('/', MainPageHandler),
     ('/add_college', AddCollegeHandler),
     ('/AddStudent', CreateProfile),
     ('/populateDatabase', PopulateDataBase),
-    ('/college_list', PreCodedCollegeHandler),
+    ('/preloaded_colleges', PreCodedCollegeHandler),
      # ('/', ComparisonHandler),
 
 
