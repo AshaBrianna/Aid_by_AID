@@ -36,6 +36,8 @@ class CreateProfile(webapp2.RequestHandler):
 
         template = jinja_env.get_template('templates/StudentProfile.html')
         self.response.write(template.render())
+    def post(self):
+        
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
