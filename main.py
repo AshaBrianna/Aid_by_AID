@@ -24,6 +24,7 @@ class College(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
     student = ndb.KeyProperty(Student)
+    college_location = ndb.StringProperty(required = True)
 
 class PreLoadedCollege(ndb.Model):
     college_name = ndb.StringProperty(required = True)
