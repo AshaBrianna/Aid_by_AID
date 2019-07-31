@@ -14,16 +14,9 @@
     <a class = "myButton" href="/AddStudent" > + PROFILE </a>
   </div>
   <body>
-<<<<<<< HEAD
     <form class="" action="/college_list" method="POST">
-=======
-    <div class="header"><img src="stylesheets/logo.png" height = 100px></div>
-
-
     <form class="" action="/preloaded_colleges" method="POST">
->>>>>>> 7fc17b2db865ffc7b4cf68c644e31849155a6f4b
       <div class="container">
-
       {% for colleges in college %}
       <ul>
       <li><input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
