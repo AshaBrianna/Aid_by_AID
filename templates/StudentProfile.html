@@ -12,6 +12,11 @@
   <body>
     <h1>ADD YOUR PROFILE</h1>
     <p> Please enter your profile information below</p>
+
+    {% for flight_prices in prices %}
+    <p>{{flight_prices}}</p>
+    {%endfor%}
+
     <br>
     <div class="container">
       <form method="post" action="/">
@@ -22,6 +27,9 @@
             </div>
             <div class="flex-student-name">
               <input type="text" id="profile_name" name="student_name" placeholder="Student's name...">
+            </div>
+            <div class="flex-student-location">
+              <input type="text" id="profile_location" name="student_location" placeholder="Student's location...">
             </div>
             <div class="flex-student-rows">
               <input type="text" id="home_location" name="students location" placeholder="Student's location...">
