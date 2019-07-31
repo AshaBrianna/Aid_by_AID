@@ -1,3 +1,7 @@
+html{
+  height: 100%;
+}
+
 .instructions{
   text-align: left;
 }
@@ -80,7 +84,9 @@ body {
   text-align: center;
   background: CornSilk;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
-  margin: 60px;
+  margin-top: 60px;
+  margin-right: 60px;
+  margin-left: 60px;
   }
 
 p {
@@ -180,7 +186,7 @@ flex-direction: row;
   }
  }
  @media screen and (max-width: 1220px) {
-  .logo,.myButton, input[type=submit] {
+  .myButton, input[type=submit] {
     width: 100%;
     margin-top: 0;
   }
@@ -267,6 +273,7 @@ label{
    background: -webkit-linear-gradient(left, white, Cornsilk);
    background: linear-gradient(to bottom, white, wheat);
    font-family: 'Roboto', sans-serif;
+
  }
  section{
    margin: 50px;
