@@ -24,6 +24,7 @@ class College(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
     student = ndb.KeyProperty(Student)
+    #college_location = ndb.StringProperty(required = True)
 
 class PreLoadedCollege(ndb.Model):
     college_name = ndb.StringProperty(required = True)
@@ -46,9 +47,9 @@ class CreateProfile(webapp2.RequestHandler):
                 grants = int(self.request.get("grants")),
                 email = current_user.email()
                 ).put()
-        #time.sleep(.3)
+        student_budget = self.request.get("budget")
 
-        self.redirect("/?student_key=%s" % student_key.urlsafe(), True)
+        self.redirect("/?student_key=%s&student_budget=%s" % (student_key.urlsafe(), student_budget), True)
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
@@ -72,7 +73,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
         self.redirect("/", True)
 
 #accesses the spreadsheet for now
-class CollegeSelectorHandler(webapp2.RequestHandler):
+class MainPageHandler(webapp2.RequestHandler):
     def get(self):
         #check if logged in user has a student in datastore, if yes get their key,
         #if not, add a new student to datastore
@@ -139,11 +140,11 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 app = webapp2.WSGIApplication([
-    ('/', CollegeSelectorHandler),
+    ('/', MainPageHandler),
     ('/add_college', AddCollegeHandler),
     ('/AddStudent', CreateProfile),
     ('/populateDatabase', PopulateDataBase),
-    ('/college_list', PreCodedCollegeHandler),
+    ('/preloaded_colleges', PreCodedCollegeHandler),
      # ('/', ComparisonHandler),
 
 
