@@ -10,19 +10,22 @@
   <script type="text/javascript" src="scripts/StudentProfile.js">
   </script>
   <body>
-    <div class="header"><img src="stylesheets/logo.png" height = 100px></div>
-    <div class="header"></div>
+    <div class="header">
+      <img src="stylesheets/logo.png" height = 70px>
+      <p>Your Personal College Financial Planner</p>
+      <a class = "myButton" href="/" > HOME </a>
+      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
+      <a class = "myButton" href="/add_college" > + COLLEGE </a>
+      <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+    </div>
     <br>
-    <h1>ADD YOUR PROFILE</h1>
-    <p> <i>Please enter your profile information below</i></p>
     <br>
     <div class="container">
+      <h1>ADD YOUR PROFILE</h1>
+      <p> <i>Please enter your profile information below</i></p>
       <form method="POST" action="/AddStudent">
 
           <div class="row">
-            <div class="col-25">
-              <label for="name"> P R O F I L E :</label>
-            </div>
             <div class="flex-student-name">
               <input type="text" id="student_name" name="student_name" placeholder="Your name...">
             </div>

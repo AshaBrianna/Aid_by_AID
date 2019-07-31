@@ -93,11 +93,9 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
         student_key = student.key
         college_list = College.query().filter(College.student==student_key)
         template = jinja_env.get_template('templates/MainPage.html')
-
         template_vars ={
             "college" : college_list,
             "logout_url": users.create_logout_url('/')
-
         }
         self.response.write(template.render(template_vars))
 

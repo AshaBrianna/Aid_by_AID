@@ -1,7 +1,63 @@
-.header{
-  border: 3px solid peru;
-  border-radius: 4px;
+.instructions{
+  text-align: left;
 }
+
+
+.header{
+  -moz-box-shadow: 14px 10px 41px 3px #cd863f;
+	-webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.myButton {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 20px;
+  margin-right: 30px;
+	-moz-box-shadow: 14px 10px 41px 3px #cd863f;
+	-webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+	box-shadow: 14px 10px 41px 3px #cd863f;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fff8dc), color-stop(1, #ffebcd));
+	background:-moz-linear-gradient(top, #fff8dc 5%, #ffebcd 100%);
+	background:-webkit-linear-gradient(top, #fff8dc 5%, #ffebcd 100%);
+	background:-o-linear-gradient(top, #fff8dc 5%, #ffebcd 100%);
+	background:-ms-linear-gradient(top, #fff8dc 5%, #ffebcd 100%);
+	background:linear-gradient(to bottom, #fff8dc 5%, #ffebcd 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8dc', endColorstr='#ffebcd',GradientType=0);
+	background-color:#fff8dc;
+	/* -moz-border-radius:20px;
+	-webkit-border-radius:20px; */
+	border-radius:20px;
+	border:2px solid #ffffff;
+	/* display:inline-block; */
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:18px;
+	font-weight:bold;
+	padding:10px 18px;
+	text-decoration:none;
+	text-shadow:2px 3px 50px #cd863f;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffebcd), color-stop(1, #fff8dc));
+	background:-moz-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
+	background:-webkit-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
+	background:-o-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
+	background:-ms-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
+	background:linear-gradient(to bottom, #ffebcd 5%, #fff8dc 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebcd', endColorstr='#fff8dc',GradientType=0);
+	background-color:#ffebcd;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
 h1 {
   color: peru;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
@@ -161,20 +217,20 @@ label{
    table-layout: fixed;
  }
  .tbl-header{
-   background-color: BlanchedAlmond;
+   background-color: tan;
   }
  .tbl-content{
    height:300px;
    overflow-x:auto;
    margin-top: 0px;
-   border: 3px solid BlanchedAlmond;
+   border: 3px solid tan;
  }
  th{
    padding: 20px 15px;
    text-align: left;
    font-weight: 500;
    font-size: 12px;
-   color: peru;
+   color: white;
    text-transform: uppercase;
  }
 
@@ -185,7 +241,7 @@ label{
    font-weight: 300;
    font-size: 12px;
    color: peru;
-   border-bottom: solid 20px BlanchedAlmond;
+   border-bottom: solid 20px wheat;
 
  }
  .schoolname
