@@ -8,16 +8,15 @@
       href="stylesheets/aid_by_AID.css">
   </head>
   <body>
-    <div class="header"><img src="stylesheets/logo.png" height = 100px></div>
-    <div class="header"></div>
+    <div class="header">
+      <img src="stylesheets/logo.png" height = 70px>
+      <p>Your Personal College Financial Planner</p>
+      <a class = "myButton" href="/" > HOME </a>
+      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
+      <a class = "myButton" href="/add_college" > + COLLEGE </a>
+      <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+    </div>
     <br>
-    <a href="{{logout_url}}">LOGOUT</a>
-    <div class="button">
-      <a class="button"href="/add_college" > ADD/EDIT A COLLEGE </a>
-    </div>
-    <div class="button">
-      <a href="/AddStudent" > ADD/EDIT YOUR PROFILE </a>
-    </div>
     <br>
     <div class="tbl-header">
       <table id="college_table">
