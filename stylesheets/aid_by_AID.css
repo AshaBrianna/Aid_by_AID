@@ -1,3 +1,7 @@
+.header{
+  border: 3px solid peru;
+  border-radius: 4px;
+}
 h1 {
   color: peru;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
@@ -196,7 +200,7 @@ label{
  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
  body{
    background: -webkit-linear-gradient(left, white, Cornsilk);
-   background: linear-gradient(to right, white, Cornsilk);
+   background: linear-gradient(to bottom, white, Cornsilk);
    font-family: 'Roboto', sans-serif;
  }
  section{
