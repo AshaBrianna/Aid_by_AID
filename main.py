@@ -2,15 +2,20 @@ import jinja2
 import logging
 import os
 import webapp2
+<<<<<<< HEAD
 import json
+=======
+import time
+
+>>>>>>> 9ae7892a4c3d65202930e9e4bf7d2c983313531c
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
 class Student(ndb.Model):
     home_location = ndb.StringProperty(required = True)
+    student_name = ndb.StringProperty(required = True)
     budget = ndb.IntegerProperty(required = False, default = 0)
-    prospective_colleges = ndb.StringProperty(required = False)
     grants = ndb.IntegerProperty(required = False, default = 0)
     email = ndb.StringProperty(required = True)
 
@@ -38,6 +43,17 @@ class CreateProfile(webapp2.RequestHandler):
 
         template = jinja_env.get_template('templates/StudentProfile.html')
         self.response.write(template.render())
+    def post(self):
+        current_user = users.get_current_user()
+        student_key = Student(student_name = self.request.get("student_name"),
+                home_location = self.request.get("home_location"),
+                budget = int(self.request.get("budget")),
+                grants = int(self.request.get("grants")),
+                email = current_user.email()
+                ).put()
+        #time.sleep(.3)
+
+        self.redirect("/?student_key=%s" % student_key.urlsafe(), True)
 
     # def post(self):
 
@@ -60,6 +76,8 @@ class AddCollegeHandler(webapp2.RequestHandler):
             student = student_key,
         ).put()
 
+
+
         self.redirect("/", True)
 
 #accesses the spreadsheet for now
@@ -67,20 +85,25 @@ class CollegeSelectorHandler(webapp2.RequestHandler):
     def get(self):
         #check if logged in user has a student in datastore, if yes get their key,
         #if not, add a new student to datastore
-        current_user = users.get_current_user()
-        student = Student.query().filter(Student.email == current_user.email()).get()
-        if student == None:
-            #TODO if a user does not have a student instance, redirect them to profile creation page
-            student_key = Student(home_location = "home", email = current_user.email()).put()
+
+        urlsafe_key = self.request.get("student_key")
+        if urlsafe_key != "":
+            key = ndb.Key(urlsafe = urlsafe_key)
+            student = key.get()
         else:
-            student_key = student.key
+            current_user = users.get_current_user()
+            student = Student.query().filter(Student.email == current_user.email()).get()
+
+        if student is None:
+            #TODO if a user does not have a student instance, redirect them to profile creation page
+            self.redirect("/AddStudent", True)
+            return
+        student_key = student.key
         college_list = College.query().filter(College.student==student_key)
         template = jinja_env.get_template('templates/MainPage.html')
-
         template_vars ={
             "college" : college_list,
             "logout_url": users.create_logout_url('/')
-
         }
         self.response.write(template.render(template_vars))
 

@@ -8,9 +8,16 @@
       href="stylesheets/aid_by_AID.css">
   </head>
   <body>
-    <a href="{{logout_url}}">LOGOUT</a>
-    <h4>(USERS NAME), financially, your best option appears to be..(SCHOOL NAME W LOWEST NET COST)</h4>
-
+    <div class="header">
+      <img src="stylesheets/logo.png" height = 70px>
+      <p>Your Personal College Financial Planner</p>
+      <a class = "myButton" href="/" > HOME </a>
+      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
+      <a class = "myButton" href="/add_college" > + COLLEGE </a>
+      <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+    </div>
+    <br>
+    <br>
     <div class="tbl-header">
       <table id="college_table">
         <thead>
@@ -31,12 +38,12 @@
         <tbody>
           {% for colleges in college %}
             <tr>
-              <td class="schoolname"><b>{{colleges.college_name}}</b></td>
+              <td class="schoolname">{{colleges.college_name}}</td>
               <td>${{colleges.tuition}}</td>
               <td>${{colleges.housing}}</td>
               <td>${{colleges.food}}</td>
               <td>${{colleges.travel}}</td>
-              <td>{% set total = colleges['tuition'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
+              <td class = "total">{% set total = colleges['tuition'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
             </tr>
           {% endfor %}
           <script type="text/javascript" src="/scripts/MainPage.js">
@@ -46,14 +53,6 @@
     </div>
     <br>
     <br>
-
-    <div class="button">
-      <a href="/add_college" > ADD/EDIT A COLLEGE </a>
-    </div>
-
-    <div class="button">
-      <a href="/AddStudent" > ADD/EDIT YOUR PROFILE </a>
-    </div>
 
 
 </html>
