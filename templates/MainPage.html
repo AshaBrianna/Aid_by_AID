@@ -29,6 +29,7 @@
             <th>Housing</th>
             <th>Food</th>
             <th>Travel</th>
+            <th>Books</th>
             <th>Total</th>
           </tr>
         </thead>
@@ -45,7 +46,8 @@
               <td>${{colleges.housing}}</td>
               <td>${{colleges.food}}</td>
               <td>${{colleges.travel}}</td>
-              <td class = "total">{% set total = colleges['tuition'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
+              <td>${{colleges.books}}</td>
+              <td class = "total">{% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
             </tr>
           {% endfor %}
           <script type="text/javascript" src="/scripts/MainPage.js">
