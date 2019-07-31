@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href = "aid_by_AID.css">
+    <link rel="stylesheet" href = "stylesheets/aid_by_AID.css">
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -10,12 +10,15 @@
 
 
     <form class="" action="/college_list" method="POST">
+      <div class="container">
+
       {% for colleges in college %}
       <ul>
       <li><input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
       </ul>
       {% endfor %}
       <input type="submit" name="" value="done">
+      </div>
     </form>
 
   </body>

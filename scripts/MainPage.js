@@ -1,5 +1,7 @@
 let total_elements = document.querySelectorAll(".total");
-let budget = document.querySelctor("#budget");
+let urlParams = new URLSearchParams(window.location.search);
+let budget= urlParams.get('student_budget');
+
 for(let total_element of total_elements){
   let int_total = parseInt(total_element.dataset['total']);
   if(int_total <= budget){
