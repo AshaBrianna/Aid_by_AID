@@ -1,3 +1,14 @@
+.button {
+  background-color: BlanchedAlmond; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .header{
   border: 3px solid peru;
   border-radius: 4px;
@@ -161,20 +172,20 @@ label{
    table-layout: fixed;
  }
  .tbl-header{
-   background-color: BlanchedAlmond;
+   background-color: tan;
   }
  .tbl-content{
    height:300px;
    overflow-x:auto;
    margin-top: 0px;
-   border: 3px solid BlanchedAlmond;
+   border: 3px solid tan;
  }
  th{
    padding: 20px 15px;
    text-align: left;
    font-weight: 500;
    font-size: 12px;
-   color: peru;
+   color: white;
    text-transform: uppercase;
  }
 
@@ -185,7 +196,7 @@ label{
    font-weight: 300;
    font-size: 12px;
    color: peru;
-   border-bottom: solid 20px BlanchedAlmond;
+   border-bottom: solid 20px wheat;
 
  }
  .schoolname

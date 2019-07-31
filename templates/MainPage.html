@@ -13,7 +13,7 @@
     <br>
     <a href="{{logout_url}}">LOGOUT</a>
     <div class="button">
-      <a href="/add_college" > ADD/EDIT A COLLEGE </a>
+      <a class="button"href="/add_college" > ADD/EDIT A COLLEGE </a>
     </div>
     <div class="button">
       <a href="/AddStudent" > ADD/EDIT YOUR PROFILE </a>
@@ -39,7 +39,7 @@
         <tbody>
           {% for colleges in college %}
             <tr>
-              <td class="schoolname"><b>{{colleges.college_name}}</b></td>
+              <td class="schoolname">{{colleges.college_name}}</td>
               <td>${{colleges.tuition}}</td>
               <td>${{colleges.housing}}</td>
               <td>${{colleges.food}}</td>
