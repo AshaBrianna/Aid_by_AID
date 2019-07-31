@@ -10,8 +10,8 @@ from google.appengine.api import users
 
 class Student(ndb.Model):
     home_location = ndb.StringProperty(required = True)
+    student_name = ndb.StringProperty(required = True)
     budget = ndb.IntegerProperty(required = False, default = 0)
-    prospective_colleges = ndb.StringProperty(required = False)
     grants = ndb.IntegerProperty(required = False, default = 0)
     email = ndb.StringProperty(required = True)
 
@@ -37,7 +37,7 @@ class CreateProfile(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/StudentProfile.html')
         self.response.write(template.render())
     def post(self):
-
+        Student(student_name = self.request.get("student_name"), home_location = self.request.get("home_location"), budget = self.request.get("budget"), grants = self.request.get("grants"), email = self.request.get("email"))
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
