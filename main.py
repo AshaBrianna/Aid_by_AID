@@ -95,7 +95,8 @@ class MainPageHandler(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/MainPage.html')
         template_vars ={
             "college" : college_list,
-            "logout_url": users.create_logout_url('/')
+            "logout_url": users.create_logout_url('/'),
+            "budget": student.budget,
         }
         self.response.write(template.render(template_vars))
 
