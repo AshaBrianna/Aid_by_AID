@@ -18,9 +18,12 @@
     <form class="" action="/preloaded_colleges" method="POST">
 
       <div class="container collegeselect">
+        <br>
+        <br>
       {% for colleges in college %}
 
       <input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
+      <br>
       <br>
       {% endfor %}
       </div>

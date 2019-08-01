@@ -1,7 +1,8 @@
 html{
   display: flex;
   height: inherit;
-  min-height: 100%
+  min-height: 100%;
+  text-align: center;
 }
 
 .instructions{
@@ -17,6 +18,7 @@ html{
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: auto;
 }
 
 .myButton {
@@ -72,6 +74,11 @@ h1 {
   color: peru;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
   margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
   }
 
 h2 {
@@ -82,16 +89,6 @@ h2 {
 h3 {
   color: lightgrey;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
-  }
-
-body {
-  color:peru;
-  text-align: center;
-  background: CornSilk;
-  font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
-  margin-top: 60px;
-  margin-right: 60px;
-  margin-left: 60px;
   }
 
 p {
@@ -107,13 +104,13 @@ input[type=text], select, textarea {
   padding: 12px;
   border: 1px solid peru;
   border-radius: 4px;
-
   resize: vertical;
   }
 
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  white-space: nowrap;
   }
 
 input[type=submit] {
@@ -210,10 +207,6 @@ button{
     background-color: lightgreen;
     }}
 
-label{
-  white-space: nowrap;
-  }
-
 .isInBudget {
   background-color: rgba(0, 128, 0, .2);
   }
@@ -222,31 +215,27 @@ label{
   background-color: rgba(255, 0, 0, 0.4);
  }
 
- h1{
-   font-size: 30px;
-   color: peru;
-   text-transform: uppercase;
-   font-weight: 300;
-   text-align: center;
-   margin-bottom: 15px;
+
  }
  table{
    width:100%;
-   table-layout: fixed;
+   table-layout: auto;
  }
 
  .tbl-header{
    background-color: tan;
    -moz-box-shadow: 14px 10px 41px 3px #cd863f;
   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+  width: 90%;
   }
  .tbl-content{
+   width: 90%;
    height:500px;
    overflow-x:auto;
    margin-top: 0px;
    border: 3px solid tan;
    -moz-box-shadow: 14px 10px 41px 3px #cd863f;
-  -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
  }
 
  th{
@@ -274,17 +263,21 @@ label{
 
  /* demo styles for background*/
  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
  body{
+   color:peru;
+   text-align: center;
+   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
+   margin-top: 60px;
+   margin-right: 60px;
+   margin-left: 60px;
    background: -webkit-linear-gradient(left, white, Cornsilk);
    background: linear-gradient(to bottom, white, wheat);
-   font-family: 'Roboto', sans-serif;
-
  }
+
  section{
    margin: 50px;
  }
-
-
 
  /* add scrollbar*/
  ::-webkit-scrollbar {
