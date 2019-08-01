@@ -38,6 +38,7 @@
             <th>Food</th>
             <th>Travel</th>
             <th>Books</th>
+            <th>Other</th>
             <th>Total</th>
           </tr>
         </thead>
@@ -48,7 +49,7 @@
       <table>
         <tbody>
           {% for colleges in college %}
-          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food']%}
+          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
             <tr>
               <td class="schoolname">{{colleges.college_name}}</td>
               <td>${{colleges.tuition}}</td>
@@ -56,6 +57,7 @@
               <td>${{colleges.food}}</td>
               <td>${{colleges.travel}}</td>
               <td>${{colleges.books}}</td>
+              <td>${{colleges.other}}</td>
               <td class = "total" data-total = "{{total}}"> ${{total}}</td>
             </tr>
           {% endfor %}
