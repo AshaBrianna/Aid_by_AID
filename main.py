@@ -32,8 +32,8 @@ class College(ndb.Model):
     other = ndb.IntegerProperty(required = False, default = 0)
     student = ndb.KeyProperty(Student)
     college_key = ndb.KeyProperty(repeated = True)
-    travel = ndb.IntegerProperty(required = True)
-    college_location = ndb.StringProperty(required = True)
+    travel = ndb.IntegerProperty(required = False)
+    college_location = ndb.StringProperty(required = False)
 
 class PreLoadedCollege(ndb.Model):
     college_name = ndb.StringProperty(required = True)
@@ -42,6 +42,8 @@ class PreLoadedCollege(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
     other = ndb.IntegerProperty(required = False, default = 0)
+    student = ndb.KeyProperty(Student)
+
 
 class CreateProfile(webapp2.RequestHandler):
     def get(self):
@@ -87,7 +89,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
         )
 # # student_key.get().home_location,student_key.get().college_location,
         flights_dictionary = json.loads(flights_response.content)
-        logging.info('read this')
+
         College(
             college_name = self.request.get("college_name"),
             college_location = self.request.get("college_location"),
@@ -97,7 +99,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
             books = int(self.request.get("books")),
             travel = int(flights_dictionary["Quotes"][0]["MinPrice"]),
             student = student_key,
-        ).put()
+            ).put()
         self.redirect("/", True)
 
 
@@ -125,6 +127,7 @@ class MainPageHandler(webapp2.RequestHandler):
             "logout_url": users.create_logout_url('/'),
             "budget": student.budget,
         }
+        print(College.travel)
         self.response.write(template.render(template_vars))
 
 class PopulateDataBase(webapp2.RequestHandler):
@@ -144,7 +147,7 @@ class PopulateDataBase(webapp2.RequestHandler):
         pomona = PreLoadedCollege(college_name = "Pomona University", tuition = 54380, housing = 17218, food = 0, books = 1500, other = 382).put()
         santaclara= PreLoadedCollege(college_name = "Santa Clara University", tuition = 52998, housing = 15507, food = 0, books = 1971, other = 636).put()
         usc = PreLoadedCollege(college_name = "USC", tuition = 57256, housing = 15916, food = 0, books = 1200, other = 939).put()
-        calpoly= PreLoadedCollege(college_name = "Cal, Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0).put()
+        calpoly= PreLoadedCollege(college_name = "Cal Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0).put()
         caltech = PreLoadedCollege(college_name = "Cal Tech", tuition = 52506, housing = 9615, food = 7029, books = 1428, other = 2094).put()
         pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0).put()
         self.redirect('/', True)

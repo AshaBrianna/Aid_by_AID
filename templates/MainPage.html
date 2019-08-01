@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
   <head>
     <meta charset="utf-8">
     <title>College Financial Planning Aid</title>
@@ -10,8 +11,10 @@
       </script>
       <script type="text/javascript">
         let globalBudget = {{budget}};
+
       </script>
   </head>
+
   <body>
     <div class="wholepage">
     <div class="header">
@@ -49,25 +52,45 @@
     <div class="tbl-content">
       <table>
         <tbody>
+<<<<<<< HEAD
           {% for colleges in college %}
           {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] +  %}
+=======
+>>>>>>> 518cba913464710a7179bd8c510ec0e9a33c85fc
             <tr>
-              <td class="schoolname">{{colleges.college_name}}</td>
-              <td>${{colleges.tuition}}</td>
-              <td>${{colleges.housing}}</td>
-              <td>${{colleges.food}}</td>
-              <td>${{colleges.travel}}</td>
-              <td>${{colleges.books}}</td>
-              <td>${{colleges.other}}</td>
-              <td class = "total" data-total = "{{total}}"> ${{total}}</td>
+              <th>School</th>
+              <th>Tuition</th>
+              <th>Housing</th>
+              <th>Food</th>
+              <th>Travel</th>
+              {% for flight_prices in prices %}
+              <p>{{flight_prices}}</p>
+              {%endfor%}
+              <th>Books</th>
+              <th>Other</th>
+              <th>Total</th>
             </tr>
-          {% endfor %}
-          <script type="text/javascript" src="/scripts/MainPage.js">
-          </script>
-        </tbody>
+          </thead>
+
+          <tbody class="tbl-content">
+            {% for colleges in college %}
+            {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
+              <tr>
+                <td class="schoolname">{{colleges.college_name}}</td>
+                <td>${{colleges.tuition}}</td>
+                <td>${{colleges.housing}}</td>
+                <td>${{colleges.food}}</td>
+                <td>${{colleges.travel}}</td>
+                <td>${{colleges.books}}</td>
+                <td>${{colleges.other}}</td>
+                <td class = "total" data-total = "{{total}}"> ${{total}}</td>
+              </tr>
+            {% endfor %}
+            <script type="text/javascript" src="/scripts/MainPage.js">
+            </script>
+          </tbody>
       </table>
-    </div>
-  </div>
-</div>
-</body>
+
+
+  </body>
 </html>
