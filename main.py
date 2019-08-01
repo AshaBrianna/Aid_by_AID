@@ -4,7 +4,6 @@ import os
 import webapp2
 import time
 
-
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
@@ -36,9 +35,7 @@ class PreLoadedCollege(ndb.Model):
     other = ndb.IntegerProperty(required = False, default = 0)
 
 class CreateProfile(webapp2.RequestHandler):
-
     def get(self):
-
         template = jinja_env.get_template('templates/StudentProfile.html')
         self.response.write(template.render())
     def post(self):
@@ -50,14 +47,12 @@ class CreateProfile(webapp2.RequestHandler):
                 email = current_user.email()
                 ).put()
         student_budget = self.request.get("budget")
-
         self.redirect("/?student_key=%s&student_budget=%s" % (student_key.urlsafe(), student_budget), True)
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('templates/AddCollege.html')
         self.response.write(template.render())
-
     def post(self):
         current_user = users.get_current_user()
         student_key = Student.query().filter(Student.email == current_user.email()).get().key
@@ -69,9 +64,6 @@ class AddCollegeHandler(webapp2.RequestHandler):
             books = int(self.request.get("books")),
             student = student_key,
         ).put()
-
-
-
         self.redirect("/", True)
 
 #accesses the spreadsheet for now
@@ -79,7 +71,6 @@ class MainPageHandler(webapp2.RequestHandler):
     def get(self):
         #check if logged in user has a student in datastore, if yes get their key,
         #if not, add a new student to datastore
-
         urlsafe_key = self.request.get("student_key")
         if urlsafe_key != "":
             key = ndb.Key(urlsafe = urlsafe_key)
@@ -87,7 +78,6 @@ class MainPageHandler(webapp2.RequestHandler):
         else:
             current_user = users.get_current_user()
             student = Student.query().filter(Student.email == current_user.email()).get()
-
         if student is None:
             #TODO if a user does not have a student instance, redirect them to profile creation page
             self.redirect("/AddStudent", True)
@@ -122,8 +112,6 @@ class PopulateDataBase(webapp2.RequestHandler):
         calpoly= PreLoadedCollege(college_name = "Cal, Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0).put()
         caltech = PreLoadedCollege(college_name = "Cal Tech", tuition = 52506, housing = 9615, food = 7029, books = 1428, other = 2094).put()
         pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0).put()
-
-
         self.redirect('/', True)
 
 class PreCodedCollegeHandler(webapp2.RequestHandler):
@@ -134,7 +122,6 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
         "college" : college_list,
         "logout_url": users.create_logout_url('/'),
         }
-
         self.response.write(template.render(template_vars))
 
     def post(self):
@@ -152,13 +139,12 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
                     books = college.books,
                     student = student_key,
                 ).put()
-
         self.redirect('/', True)
-
 
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
+
 app = webapp2.WSGIApplication([
     ('/', MainPageHandler),
     ('/add_college', AddCollegeHandler),
@@ -166,6 +152,4 @@ app = webapp2.WSGIApplication([
     ('/populateDatabase', PopulateDataBase),
     ('/preloaded_colleges', PreCodedCollegeHandler),
      # ('/', ComparisonHandler),
-
-
 ], debug=True)

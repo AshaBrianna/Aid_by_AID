@@ -1,5 +1,7 @@
 html{
-  height: 100%;
+  display: flex;
+  height: inherit;
+  min-height: 100%
 }
 
 .instructions{
@@ -61,7 +63,10 @@ html{
 	top:1px;
 }
 
-
+.collegeselect{
+  height: 600px;
+  overflow-y: scroll;
+}
 
 h1 {
   color: peru;
@@ -215,7 +220,6 @@ label{
 
 .isNotInBudget{
   background-color: rgba(255, 0, 0, 0.4);
-
  }
 
  h1{
