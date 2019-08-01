@@ -17,14 +17,14 @@
   </head>
 
   <body>
-    <div class = "wholepage">
-    <div class = "header">
-      <img class = "logo" class = "logoimage" src = "stylesheets/logo.png" height = 90px>
+    <div class="wholepage">
+    <div class="header">
+      <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 90px>
       <p class= "logo" >Your Personal College Financial Planner</p>
       <a class = "myButton" href = "/" > HOME</a>
       <a class = "myButton" href = "/AddStudent" > + PROFILE </a>
       <a class = "myButton" href = "/preloaded_colleges" > + COLLEGE </a>
-      <a class = "myButton" href = "/add_college" > CREATE COLLEGE </a>
+      <a class = "myButton" href = "/add_college" > ADD COLLEGE </a>
       <a class = "myButton" href = "{{logout_url}}" > LOGOUT </a>
     </div>
     <br>
@@ -35,7 +35,7 @@
       <table id="college_table">
         <thead>
           <tr>
-            <th class = "schoolheader">School</th>
+            <th>School</th>
             <th>Tuition</th>
             <th>Housing</th>
             <th>Food</th>
@@ -43,15 +43,28 @@
             {% for flight_prices in prices %}
             <p>{{flight_prices}}</p>
             {%endfor%}
-            <th>Books</th>
-            <th>Other</th>
-            <th>Total</th>
+            <th class="drag">Books</th>
+            <th class="drag">Other</th>
+            <th class="drag">Total</th>
           </tr>
         </thead>
       </table>
     </div>
     <div class="tbl-content">
       <table>
+            <!-- <tr>
+              <th>School</th>
+              <th>Tuition</th>
+              <th>Housing</th>
+              <th>Food</th>
+              <th>Travel</th>
+              {% for flight_prices in prices %}
+              <p>{{flight_prices}}</p>
+              {%endfor%}
+              <th>Books</th>
+              <th>Other</th>
+              <th>Total</th>
+            </tr> -->
           <tbody class="tbl-content">
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] + colleges['travel'] %}
