@@ -20,7 +20,6 @@ class Student(ndb.Model):
     home_location = ndb.StringProperty(required = True)
     student_name = ndb.StringProperty(required = True)
     budget = ndb.IntegerProperty(required = False, default = 0)
-    grants = ndb.IntegerProperty(required = False, default = 0)
     email = ndb.StringProperty(required = True)
 
 class College(ndb.Model):
@@ -33,6 +32,7 @@ class College(ndb.Model):
     student = ndb.KeyProperty(Student)
     college_key = ndb.KeyProperty(repeated = True)
     travel = ndb.IntegerProperty(required = False)
+    grants = ndb.IntegerProperty(required = False, default = 0)
     college_location = ndb.StringProperty(required = False)
 
 class PreLoadedCollege(ndb.Model):
@@ -101,6 +101,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
             books = int(self.request.get("books")),
             travel = int(flights_dictionary["Quotes"][0]["MinPrice"]),
             student = student_key,
+            grants = int(self.request.get("grants")),
             ).put()
         self.redirect("/", True)
 
