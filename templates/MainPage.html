@@ -2,7 +2,6 @@
 <html lang="en" dir="ltr">
 
   <head>
-    <script type="text/javascript" src="drag.js"></script>
     <meta charset="utf-8">
     <title>College Financial Planning Aid</title>
     <link
@@ -12,12 +11,11 @@
       </script>
       <script type="text/javascript">
         let globalBudget = {{budget}};
-        // let globalGrants = {{grants}};
 
       </script>
   </head>
 
-  <body onload="REDIPS.drag.init()">
+  <body>
     <div class="wholepage">
     <div class="header">
       <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 90px>
@@ -36,19 +34,17 @@
       <table id="college_table">
         <thead>
           <tr>
-            <div id="drag">
-            <th class="drag">School</th>
-            <th class="drag">Tuition</th>
-            <th class="drag">Housing</th>
-            <th class="drag">Food</th>
-            <th class="drag">Travel</th>
+            <th>School</th>
+            <th>Tuition</th>
+            <th>Housing</th>
+            <th>Food</th>
+            <th>Travel</th>
             {% for flight_prices in prices %}
             <p>{{flight_prices}}</p>
             {%endfor%}
             <th class="drag">Books</th>
             <th class="drag">Other</th>
             <th class="drag">Total</th>
-          </div>
           </tr>
         </thead>
       </table>

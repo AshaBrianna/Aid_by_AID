@@ -152,6 +152,7 @@ class PopulateDataBase(webapp2.RequestHandler):
         pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0).put()
         self.redirect('/', True)
 
+
 class PreCodedCollegeHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('templates/SelectCollege.html')
