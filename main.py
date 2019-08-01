@@ -58,9 +58,7 @@ class CreateProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         student_key = Student(student_name = self.request.get("student_name"),
                 home_location = self.request.get("home_location"),
-                # home_location = self.request.get("home_location"),
                 budget = int(self.request.get("budget")),
-                grants = int(self.request.get("grants")),
                 email = current_user.email()
                 ).put()
         student_budget = self.request.get("budget")
@@ -80,6 +78,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
         current_user = users.get_current_user()
         student_key = Student.query().filter(Student.email == current_user.email()).get().key
         student = Student.query().filter(Student.email == current_user.email()).get()
+        student_airport = Student.query().filter(Student.email == current_user.email()).get().home_location
         if student == None:
             self.redirect('/', True)
             return
@@ -87,7 +86,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
         # home_location = 'home'
         # current_user = users.get_current_user()
         # # TODO: Add case for admin login
-        full_url= "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + str(fly_to) + '/' + str(fly_from) + "/2019-09-01?inboundpartialdate=2019-12-01/"
+        full_url= "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + str(fly_to) + '/' + str(student_airport)+ "/2019-09-01?inboundpartialdate=2019-12-01/"
         flights_response = urlfetch.fetch(
         full_url,
           headers={
@@ -129,6 +128,7 @@ class MainPageHandler(webapp2.RequestHandler):
             self.redirect("/AddStudent", True)
             return
         student_key = student.key
+
         college_list = College.query().filter(College.student==student_key)
         template = jinja_env.get_template('templates/MainPage.html')
         template_vars ={
@@ -141,11 +141,11 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class PopulateDataBase(webapp2.RequestHandler):
     def get(self):
-        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870, other = 0, college_location = "LAX").put()
-        uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400, other = 0).put()
-        uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159, other = 0).put()
-        uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464, other = 0).put()
-        uc_sc = PreLoadedCollege(college_name = "UC Santa Cruz", tuition = 13989, housing = 16950, food = 0, books = 1086, other = 0).put()
+        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870, other = 0, college_location = "OAK").put()
+        uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400, other = 0, college_location = "RAL").put()
+        uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159, other = 0, college_location = "SJC").put()
+        uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464, other = 0, college_location = "LAX").put()
+        uc_sc = PreLoadedCollege(college_name = "UC Santa Cruz", tuition = 13989, housing = 16950, food = 0, books = 1086, other = 0, college_location = "SJC").put()
         uc_sd= PreLoadedCollege(college_name = "UC San Diego", tuition = 14451, housing = 14295, food = 0, books = 1128, other = 0).put()
         uc_irvine= PreLoadedCollege(college_name = "UC Irvine", tuition = 15797, housing = 19744, food = 0, books = 0, other = 0).put()
         uc_merced= PreLoadedCollege(college_name = "UC Merced", tuition = 13538, housing = 17046, food = 0, books = 1016, other = 0).put()
