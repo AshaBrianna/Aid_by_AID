@@ -153,6 +153,10 @@ class PopulateDataBase(webapp2.RequestHandler):
         caltech = PreLoadedCollege(college_name = "Cal Tech", tuition = 52506, housing = 9615, food = 7029, books = 1428, other = 2094).put()
         pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0).put()
         self.redirect('/', True)
+        if student is None:
+            #TODO if a user does not have a student instance, redirect them to profile creation page
+            self.redirect("/AddStudent", True)
+            return
 
 
 class PreCodedCollegeHandler(webapp2.RequestHandler):
