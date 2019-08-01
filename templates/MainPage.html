@@ -6,15 +6,22 @@
     <link
       rel="stylesheet"
       href="stylesheets/aid_by_AID.css">
+      <script type="text/javascript" src = >
+      </script>
+      <script type="text/javascript">
+        let globalBudget = {{budget}};
+      </script>
   </head>
   <body>
+    <div class="wholepage">
     <div class="header">
-      <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 70px>
+      <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 90px>
       <p class= "logo" >Your Personal College Financial Planner</p>
-      <a class = "myButton" href="/" > HOME </a>
-      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
-      <a class = "myButton" href="/add_college" > + COLLEGE </a>
+      <a class = "myButton" href="/" > HOME</a>
       <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+      <a class = "myButton" href="/preloaded_colleges" > + COLLEGE </a>
+      <a class = "myButton" href="/add_college" > CREATE COLLEGE </a>
+      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
     </div>
     <br>
     <br>
@@ -33,16 +40,17 @@
             <p>{{flight_prices}}</p>
             {%endfor%}
             <th>Books</th>
+            <th>Other</th>
             <th>Total</th>
           </tr>
         </thead>
       </table>
     </div>
-
     <div class="tbl-content">
       <table>
         <tbody>
           {% for colleges in college %}
+          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
             <tr>
               <td class="schoolname">{{colleges.college_name}}</td>
               <td>${{colleges.tuition}}</td>
@@ -50,7 +58,8 @@
               <td>${{colleges.food}}</td>
               <td>${{colleges.travel}}</td>
               <td>${{colleges.books}}</td>
-              <td class = "total">{% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food']%} ${{total}}</td>
+              <td>${{colleges.other}}</td>
+              <td class = "total" data-total = "{{total}}"> ${{total}}</td>
             </tr>
           {% endfor %}
           <script type="text/javascript" src="/scripts/MainPage.js">
@@ -59,8 +68,6 @@
       </table>
     </div>
   </div>
-    <br>
-    <br>
-
-
+</div>
+</body>
 </html>

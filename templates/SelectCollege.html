@@ -6,24 +6,30 @@
     <title></title>
   </head>
   <div class="header">
-    <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 70px>
+    <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 90px>
     <p class= "logo" >Your Personal College Financial Planner</p>
     <a class = "myButton" href="/" > HOME </a>
-    <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
-    <a class = "myButton" href="/add_college" > + COLLEGE </a>
     <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+    <a class = "myButton" href="/preloaded_colleges" > + COLLEGE </a>
+    <a class = "myButton" href="/add_college" > CREATE COLLEGE </a>
+    <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
   </div>
   <body>
-    <form class="" action="/college_list" method="POST">
     <form class="" action="/preloaded_colleges" method="POST">
-      <div class="container">
+
+      <div class="container collegeselect">
+        <br>
+        <br>
       {% for colleges in college %}
-      <ul>
-      <li><input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
-      </ul>
+
+      <input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
+      <br>
+      <br>
       {% endfor %}
-      <input type="submit" name="" value="done">
       </div>
+
+      <br>
+      <input type="submit" name="" value="ADD SELECTED COLLEGES">
     </form>
 
   </body>
