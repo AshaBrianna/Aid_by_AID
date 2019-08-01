@@ -42,6 +42,8 @@ class PreLoadedCollege(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
     other = ndb.IntegerProperty(required = False, default = 0)
+    travel = ndb.IntegerProperty(required = False)
+    college_location = ndb.StringProperty(required = False)
     student = ndb.KeyProperty(Student)
 
 
@@ -132,7 +134,7 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class PopulateDataBase(webapp2.RequestHandler):
     def get(self):
-        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870, other = 0).put()
+        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870, other = 0, college_location = "LAX").put()
         uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400, other = 0).put()
         uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159, other = 0).put()
         uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464, other = 0).put()
@@ -163,12 +165,24 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
     def post(self):
+
         college_list = PreLoadedCollege.query().fetch()
         for college in college_list:
             selected = self.request.get(college.college_name)
             if selected:
                 current_user = users.get_current_user()
                 student_key = Student.query().filter(Student.email == current_user.email()).get().key
+                student_airport = Student.query().filter(Student.email == current_user.email()).get().home_location
+                logging.info(student_airport)
+                full_url= "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + str(college.college_location) + '/' + str(student_airport) + "/2019-09-01?inboundpartialdate=2019-12-01/"
+                flights_response = urlfetch.fetch(
+                full_url,
+                  headers={
+                    "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+                    "X-RapidAPI-Key": "3b06a903famshe856af999ade62ap14f722jsnfb9f1e392c75"
+                  },
+                )
+                flights_dictionary = json.loads(flights_response.content)
                 College(
                     college_name = college.college_name,
                     tuition = college.tuition,
@@ -177,7 +191,10 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
                     books = college.books,
                     student = student_key,
                     other = college.other,
+                    travel = int(flights_dictionary["Quotes"][0]["MinPrice"]),
+                    college_location = college.college_location,
                 ).put()
+
         self.redirect('/', True)
 
 jinja_env = jinja2.Environment(

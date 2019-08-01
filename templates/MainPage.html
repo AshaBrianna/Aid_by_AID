@@ -11,7 +11,7 @@
       </script>
       <script type="text/javascript">
         let globalBudget = {{budget}};
-        // let globalGrants = {{grants}};
+        // let globalGra nts = {{grants}};
 
       </script>
   </head>
@@ -54,7 +54,7 @@
       <table>
           <tbody class="tbl-content">
             {% for colleges in college %}
-            {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
+            {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] + colleges['travel'] %}
               <tr>
                 <td class="schoolname">{{colleges.college_name}}</td>
                 <td>${{colleges.tuition}}</td>
