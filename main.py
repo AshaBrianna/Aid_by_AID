@@ -134,10 +134,10 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class PopulateDataBase(webapp2.RequestHandler):
     def get(self):
-        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870, other = 0, college_location = "LAX").put()
-        uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400, other = 0).put()
-        uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159, other = 0).put()
-        uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464, other = 0).put()
+        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870, other = 0, college_location = "OAK").put()
+        uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400, other = 0, college_location = "RAL").put()
+        uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159, other = 0, college_location = "SJC").put()
+        uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464, other = 0, college_location = "SJC").put()
         uc_sc = PreLoadedCollege(college_name = "UC Santa Cruz", tuition = 13989, housing = 16950, food = 0, books = 1086, other = 0).put()
         uc_sd= PreLoadedCollege(college_name = "UC San Diego", tuition = 14451, housing = 14295, food = 0, books = 1128, other = 0).put()
         uc_irvine= PreLoadedCollege(college_name = "UC Irvine", tuition = 15797, housing = 19744, food = 0, books = 0, other = 0).put()
