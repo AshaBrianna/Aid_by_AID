@@ -54,14 +54,16 @@ html{
 }
 .myButton:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffebcd), color-stop(1, #fff8dc));
-	background:-moz-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
-	background:-webkit-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
-	background:-o-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
-	background:-ms-linear-gradient(top, #ffebcd 5%, #fff8dc 100%);
-	background:linear-gradient(to bottom, #ffebcd 5%, #fff8dc 100%);
+	background:-moz-linear-gradient(top, light 5%, #cff1cf 100%);
+	background:-webkit-linear-gradient(top, #ffebcd 5%, #cff1cf 100%);
+	background:-o-linear-gradient(top, #ffebcd 5%, #cff1cf 100%);
+	background:-ms-linear-gradient(top, #ffebcd 5%, #cff1cf 100%);
+	background:linear-gradient(to bottom, #ffebcd 5%, #cff1cf 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebcd', endColorstr='#fff8dc',GradientType=0);
 	background-color:#ffebcd;
+  (0, 128, 0, .4)
 }
+
 .myButton:active {
 	position:relative;
 	top:1px;
@@ -69,7 +71,7 @@ html{
 
 
 h1 {
-  color: peru;
+  color: saddlebrown;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
   font-size: 30px;
   text-transform: uppercase;
@@ -81,14 +83,10 @@ p {
   margin: 40px;
   }
 
-form{
-  margin: 40px;
-  }
-
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid peru;
+  border: 1px solid saddlebrown;
   border-radius: 4px;
   resize: vertical;
   }
@@ -100,7 +98,7 @@ label {
   }
 
 input[type=submit] {
-  background-color: peru;
+  background-color: saddlebrown;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -110,7 +108,7 @@ input[type=submit] {
   }
 
 input[type=submit]:hover {
-  background-color: lightgreen;
+  background-color: #8FBC8F;
   }
 
 .container {
@@ -120,7 +118,6 @@ input[type=submit]:hover {
   -moz-box-shadow: 14px 10px 41px 3px #cd863f;
   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
   min-height:600px;
-  margin: 40px;
   }
 
 #profile_name {
@@ -185,7 +182,7 @@ input[type=submit]:hover {
  }
 
 button{
-    background-color: peru;
+    background-color: saddlebrown;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -194,8 +191,8 @@ button{
     float: right;
     }
     hover {
-    background-color: lightgreen;
-    }}
+    background-color: (0, 128, 0, .4);
+    }
 
 .isInBudget {
   background-color: rgba(0, 128, 0, .4);
@@ -246,7 +243,7 @@ button{
    vertical-align: middle;
    font-weight: 300;
    font-size: 12px;
-   color: peru;
+   color: saddlebrown;
    border-bottom: solid 20px wheat;
  }
  .schoolname
@@ -257,7 +254,7 @@ button{
  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
  body{
-   color:peru;
+   color:saddlebrown;
    text-align: center;
    font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
    margin: auto;
@@ -276,10 +273,10 @@ button{
      width: 10px;
  }
  ::-webkit-scrollbar-track {
-     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     -webkit-box-shadow: inset 0 0 10px rgba(0, 128, 0, .3);
  }
  ::-webkit-scrollbar-thumb {
-     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     -webkit-box-shadow: inset 0 0 10px rgba(0, 128, 0, .5);
  }
 
  .scroll{
@@ -290,4 +287,8 @@ button{
  .wholpage{
    margin: auto;
    text-align: center;
+ }
+
+ .marginneeded{
+   margin: 40px;
  }
