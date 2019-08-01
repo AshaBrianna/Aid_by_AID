@@ -15,6 +15,8 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 
+
+
 class Student(ndb.Model):
     home_location = ndb.StringProperty(required = True)
     student_name = ndb.StringProperty(required = True)
@@ -30,6 +32,8 @@ class College(ndb.Model):
     books = ndb.IntegerProperty(required = False, default = 0)
     college_location = ndb.StringProperty(required = False)
     student = ndb.KeyProperty(Student)
+    college_key = ndb.KeyProperty(repeated = True)
+    travel = ndb.IntegerProperty(required = True)
     #college_location = ndb.StringProperty(required = True)
 
 class PreLoadedCollege(ndb.Model):
@@ -38,7 +42,7 @@ class PreLoadedCollege(ndb.Model):
     housing = ndb.IntegerProperty(required = False, default = 0)
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
-    college_location = ndb.StringProperty(required = False)
+    # college_location = ndb.StringProperty(required = False)
 
 
 class CreateProfile(webapp2.RequestHandler):
@@ -51,6 +55,7 @@ class CreateProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         student_key = Student(student_name = self.request.get("student_name"),
                 home_location = self.request.get("home_location"),
+                # home_location = self.request.get("home_location"),
                 budget = int(self.request.get("budget")),
                 grants = int(self.request.get("grants")),
                 email = current_user.email()
@@ -65,32 +70,29 @@ class AddCollegeHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
+        logging.info('starts post')
+        fly_to = self.request.get("college_location")
+        fly_from = self.request.get("home_location")
         current_user = users.get_current_user()
         student_key = Student.query().filter(Student.email == current_user.email()).get().key
-        base_url= "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/US/USD/en-US/SFO-sky/LAX-sky/2019-09-01?inboundpartialdate=2019-12-01"
-        full_url = base_url + '?' + urllib.urlencode(
-                {
-          "inboundDate": "2019-09-10",
-          "cabinClass": "business",
-          "children": 0,
-          "infants": 0,
-          "country": "US",
-          "currency": "USD",
-          "locale": "en-US",
-          "originPlace": student_key.get().home_location,
-          "destinationPlace": student_key.get().college_location,
-          "outboundDate": "2019-09-01",
-          "adults": 1
-            }
-          )
+        student = Student.query().filter(Student.email == current_user.email()).get()
+        if student == None:
+            self.redirect('/', True)
+            return
+        # college_location = 'college'
+        # home_location = 'home'
+        # current_user = users.get_current_user()
+        # # TODO: Add case for admin login
+        full_url= "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/" + str(fly_to) + '/' + str(fly_from) + "/2019-09-01?inboundpartialdate=2019-12-01/"
         flights_response = urlfetch.fetch(
         full_url,
           headers={
             "X-RapidAPI-Host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
             "X-RapidAPI-Key": "3b06a903famshe856af999ade62ap14f722jsnfb9f1e392c75"
           },
-
         )
+# # student_key.get().home_location,student_key.get().college_location,
+#
         flights_dictionary = json.loads(flights_response.content)
         College(
             college_name = self.request.get("college_name"),
@@ -101,13 +103,8 @@ class AddCollegeHandler(webapp2.RequestHandler):
             books = int(self.request.get("books")),
             travel = int(flights_dictionary["Quotes"][0]["MinPrice"]),
             student = student_key,
-        ).put()
+            ).put()
 
-
-
-        self.redirect("/", True)
-
-#accesses the spreadsheet for now
 class MainPageHandler(webapp2.RequestHandler):
     def get(self):
         #check if logged in user has a student in datastore, if yes get their key,
