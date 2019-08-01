@@ -32,8 +32,8 @@ class College(ndb.Model):
     other = ndb.IntegerProperty(required = False, default = 0)
     student = ndb.KeyProperty(Student)
     college_key = ndb.KeyProperty(repeated = True)
-    travel = ndb.IntegerProperty(required = True)
-    college_location = ndb.StringProperty(required = True)
+    travel = ndb.IntegerProperty(required = False)
+    college_location = ndb.StringProperty(required = False)
 
 class PreLoadedCollege(ndb.Model):
     college_name = ndb.StringProperty(required = True)
@@ -42,6 +42,9 @@ class PreLoadedCollege(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
     other = ndb.IntegerProperty(required = False, default = 0)
+    student = ndb.KeyProperty(Student)
+
+
 class CreateProfile(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('templates/StudentProfile.html')
