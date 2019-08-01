@@ -54,7 +54,7 @@
     </div>
     <div class="tbl-content">
       <table>
-            <tr>
+            <!-- <tr>
               <th>School</th>
               <th>Tuition</th>
               <th>Housing</th>
@@ -66,8 +66,7 @@
               <th>Books</th>
               <th>Other</th>
               <th>Total</th>
-            </tr>
-          </thead>
+            </tr> -->
           <tbody class="tbl-content">
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
