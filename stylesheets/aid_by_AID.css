@@ -2,7 +2,9 @@ html{
   display: flex;
   height: inherit;
   min-height: 100%;
-  text-align: center;
+  /* text-align: left; */
+  /* margin-left: inherit;
+  margin-right: inherit; */
 }
 
 .instructions{
@@ -73,22 +75,10 @@ html{
 h1 {
   color: peru;
   font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
-  margin-top: 40px;
-  margin-bottom: 15px;
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 300;
   text-align: center;
-  }
-
-h2 {
-  color: darkgrey;
-  font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
-  }
-
-h3 {
-  color: lightgrey;
-  font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
   }
 
 p {
@@ -129,7 +119,6 @@ input[type=submit]:hover {
 
 .container {
   border-radius: 5px;
-  /* (pls dont delete this one commented out section) background-color: BlanchedAlmond; */
   padding: 2px;
   border: 2px solid white;
   -moz-box-shadow: 14px 10px 41px 3px #cd863f;
@@ -140,7 +129,6 @@ input[type=submit]:hover {
   display: flex;
   flex-direction: row-reverse;
 }
-
 
 .flex-student-name {
 display: flex;
@@ -215,8 +203,6 @@ button{
   background-color: rgba(255, 0, 0, 0.4);
  }
 
-
- }
  table{
    width:100%;
    table-layout: auto;
@@ -225,11 +211,12 @@ button{
  .tbl-header{
    background-color: tan;
    -moz-box-shadow: 14px 10px 41px 3px #cd863f;
-  -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
-  width: 90%;
+   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+   width:100%;
   }
+
  .tbl-content{
-   width: 90%;
+   width: 100%;
    height:500px;
    overflow-x:auto;
    margin-top: 0px;
@@ -240,7 +227,7 @@ button{
 
  th{
    padding: 20px 15px;
-   text-align: left;
+   text-align: center;
    font-weight: 500;
    font-size: 12px;
    color: white;
@@ -249,8 +236,8 @@ button{
 
  td{
    padding: 15px;
-   text-align: left;
-   vertical-align:middle;
+   text-align: center;
+   vertical-align: middle;
    font-weight: 300;
    font-size: 12px;
    color: peru;
@@ -268,11 +255,11 @@ button{
    color:peru;
    text-align: center;
    font-family: "Century Gothic","CenturyGothic","AppleGothic",sans-serif;
+   margin: auto;
    margin-top: 60px;
-   margin-right: 60px;
-   margin-left: 60px;
    background: -webkit-linear-gradient(left, white, Cornsilk);
    background: linear-gradient(to bottom, white, wheat);
+   width: 90%;
  }
 
  section{
@@ -288,4 +275,9 @@ button{
  }
  ::-webkit-scrollbar-thumb {
      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+ }
+
+ .wholpage{
+   margin: auto;
+   text-align: center;
  }
