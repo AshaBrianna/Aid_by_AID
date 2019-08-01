@@ -121,7 +121,6 @@ input[type=submit]:hover {
   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
   min-height:600px;
   margin: 40px;
-
   }
 
 #profile_name {
@@ -236,6 +235,10 @@ button{
    color: white;
    text-transform: uppercase;
  }
+
+.schoolheader{
+  width:28%
+}
 
  td{
    padding: 15px;

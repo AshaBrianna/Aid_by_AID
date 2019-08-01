@@ -34,7 +34,7 @@
       <table id="college_table">
         <thead>
           <tr>
-            <th>School</th>
+            <th class = "schoolheader">School</th>
             <th>Tuition</th>
             <th>Housing</th>
             <th>Food</th>
@@ -51,22 +51,6 @@
     </div>
     <div class="tbl-content">
       <table>
-        <tbody>
-            <tr>
-              <th>School</th>
-              <th>Tuition</th>
-              <th>Housing</th>
-              <th>Food</th>
-              <th>Travel</th>
-              {% for flight_prices in prices %}
-              <p>{{flight_prices}}</p>
-              {%endfor%}
-              <th>Books</th>
-              <th>Other</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-
           <tbody class="tbl-content">
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
