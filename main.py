@@ -102,9 +102,19 @@ class MainPageHandler(webapp2.RequestHandler):
 
 class PopulateDataBase(webapp2.RequestHandler):
     def get(self):
-        uc_berkley = PreLoadedCollege(college_name = "UC Berkley", tuition = 14254, housing = 17220, food = 1644, books = 870).put()
+        uc_berkley = PreLoadedCollege(college_name = "UC Berkeley", tuition = 14254, housing = 17220, food = 1644, books = 870).put()
         uc_riverside = PreLoadedCollege(college_name = "UC Riverside", tuition = 15602, housing = 17475, food = 6099, books = 1400).put()
         uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159).put()
+        uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464).put()
+        uc_sc = PreLoadedCollege(college_name = "UC Santa Cruz", tuition = 13989, housing = 16950, food = 0, books = 1086).put()
+        uc_sd= PreLoadedCollege(college_name = "UC San Diego", tuition = 14451, housing = 14295, food = 0, books = 1128).put()
+        uc_irvine= PreLoadedCollege(college_name = "UC Irvine", tuition = 15797, housing = 19744, food = 0, books = 0).put()
+        uc_merced= PreLoadedCollege(college_name = "UC Merced", tuition = 13538, housing = 17046, food = 0, books = 1016).put()
+
+
+
+
+
         self.redirect('/', True)
 
 class PreCodedCollegeHandler(webapp2.RequestHandler):
