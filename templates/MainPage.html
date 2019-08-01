@@ -50,7 +50,7 @@
       <table>
         <tbody>
           {% for colleges in college %}
-          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
+          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] +  %}
             <tr>
               <td class="schoolname">{{colleges.college_name}}</td>
               <td>${{colleges.tuition}}</td>

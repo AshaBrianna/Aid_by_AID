@@ -86,8 +86,8 @@ class AddCollegeHandler(webapp2.RequestHandler):
           },
         )
 # # student_key.get().home_location,student_key.get().college_location,
-#
         flights_dictionary = json.loads(flights_response.content)
+        logging.info('read this')
         College(
             college_name = self.request.get("college_name"),
             college_location = self.request.get("college_location"),
@@ -99,6 +99,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
             student = student_key,
         ).put()
         self.redirect("/", True)
+
 
 #accesses the spreadsheet for now
 class MainPageHandler(webapp2.RequestHandler):
