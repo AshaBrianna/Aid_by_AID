@@ -176,6 +176,7 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
                     food = college.food,
                     books = college.books,
                     student = student_key,
+                    other = college.other,
                 ).put()
         self.redirect('/', True)
 
