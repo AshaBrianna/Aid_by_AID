@@ -8,6 +8,11 @@
       href="stylesheets/aid_by_AID.css">
   </head>
   <body>
+    <h1>ADD A NEW COLLEGE</h1>
+    <p>Please enter the college's name and associated annual costs below. Do not include the dollar sign ($) in your entry. Feel free to also use the notes section to include any personal notes or reminders relevant to the specified college:</p>
+    <br>
+
+
     <div class="header">
       <img class="logo logoimage" src="stylesheets/logo.png" height = 90px>
       <p class= "logo" >Your Personal College Financial Planner</p>
@@ -20,8 +25,6 @@
     <br>
     <br>
     <div class="container">
-      <h1>ADD A NEW COLLEGE</h1>
-      <p class="instructions"><i>Please enter the college's name and associated annual costs below. Do not include the dollar sign ($) in your entry. Feel free to also use the notes section to include any personal notes or reminders relevant to the specified college:</i></p>
       <form method="POST" action="/add_college">
 
           <div class="row">
@@ -32,7 +35,26 @@
               <input type="text" id="name" name="college_name" placeholder="College/University name...">
             </div>
           </div>
+  <br>
+          <div class="row">
+            <div class="col-25">
+              <label for="name"> F L Y I N G <br> T O :</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="location" name="college_location" placeholder="Enter Nearest COLLEGE Airport Code (LAX)...">
+            </div>
+          </div>
 <br>
+          <div class="row">
+            <div class="col-25">
+              <label for="name"> F L Y I N G <br> F R O M :</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="location" name="home_location" placeholder="Enter Nearest Airport Code (LAX)...">
+            </div>
+          </div>
+<br>
+
         <div class="row">
           <div class="col-25">
             <label for="name">T U I T I O N :</label>
@@ -87,7 +109,7 @@
           </div>
         </div>
     </div>
-<br>
+
         <div class="row">
           <input type="submit" value="S U B M I T">
         </div>

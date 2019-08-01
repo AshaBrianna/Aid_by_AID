@@ -36,6 +36,9 @@
             <th>Housing</th>
             <th>Food</th>
             <th>Travel</th>
+            {% for flight_prices in prices %}
+            <p>{{flight_prices}}</p>
+            {%endfor%}
             <th>Books</th>
             <th>Other</th>
             <th>Total</th>
