@@ -49,8 +49,11 @@ class PreLoadedCollege(ndb.Model):
 
 class CreateProfile(webapp2.RequestHandler):
     def get(self):
+        template_vars ={
+            "logout_url": users.create_logout_url('/'),
+        }
         template = jinja_env.get_template('templates/StudentProfile.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_vars))
     def post(self):
         current_user = users.get_current_user()
         student_key = Student(student_name = self.request.get("student_name"),
@@ -63,8 +66,11 @@ class CreateProfile(webapp2.RequestHandler):
 
 class AddCollegeHandler(webapp2.RequestHandler):
     def get(self):
+        template_vars ={
+            "logout_url": users.create_logout_url('/'),
+        }
         template = jinja_env.get_template('templates/AddCollege.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_vars))
     def post(self):
         logging.info('starts post')
         fly_to = self.request.get("college_location")
