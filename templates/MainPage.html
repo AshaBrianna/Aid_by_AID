@@ -10,6 +10,7 @@
       </script>
       <script type="text/javascript">
         let globalBudget = {{budget}};
+
       </script>
   </head>
   <body>
@@ -50,7 +51,8 @@
       <table>
         <tbody>
           {% for colleges in college %}
-          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
+
+          {% set total = colleges['books'] + colleges['tuition'] + colleges['housing'] + colleges['food'] %}
             <tr>
               <td class="schoolname">{{colleges.college_name}}</td>
               <td>${{colleges.tuition}}</td>

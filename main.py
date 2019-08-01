@@ -42,7 +42,6 @@ class PreLoadedCollege(ndb.Model):
     food = ndb.IntegerProperty(required = False, default = 0)
     books = ndb.IntegerProperty(required = False, default = 0)
     other = ndb.IntegerProperty(required = False, default = 0)
-
 class CreateProfile(webapp2.RequestHandler):
     def get(self):
         template = jinja_env.get_template('templates/StudentProfile.html')
@@ -88,6 +87,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
 # # student_key.get().home_location,student_key.get().college_location,
 #
         flights_dictionary = json.loads(flights_response.content)
+
         College(
             college_name = self.request.get("college_name"),
             college_location = self.request.get("college_location"),
@@ -97,7 +97,7 @@ class AddCollegeHandler(webapp2.RequestHandler):
             books = int(self.request.get("books")),
             travel = int(flights_dictionary["Quotes"][0]["MinPrice"]),
             student = student_key,
-        ).put()
+            ).put()
         self.redirect("/", True)
 
 #accesses the spreadsheet for now
@@ -124,6 +124,7 @@ class MainPageHandler(webapp2.RequestHandler):
             "logout_url": users.create_logout_url('/'),
             "budget": student.budget,
         }
+        print(College.travel)
         self.response.write(template.render(template_vars))
 
 class PopulateDataBase(webapp2.RequestHandler):
