@@ -67,10 +67,6 @@ html{
 	top:1px;
 }
 
-.collegeselect{
-  height: 600px;
-  overflow-y: scroll;
-}
 
 h1 {
   color: peru;
@@ -123,6 +119,9 @@ input[type=submit]:hover {
   border: 2px solid white;
   -moz-box-shadow: 14px 10px 41px 3px #cd863f;
   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+  min-height:600px;
+  margin: 40px;
+
   }
 
 #profile_name {
@@ -130,24 +129,28 @@ input[type=submit]:hover {
   flex-direction: row-reverse;
 }
 
+.row{
+  margin: 40px;
+}
+
 .flex-student-name {
-display: flex;
-width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .flex-student-budget {
-display: flex;
-width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .flex-student-rows1 {
-display: flex;
-flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .flex-student-rows {
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .col-25 {
@@ -275,6 +278,11 @@ button{
  }
  ::-webkit-scrollbar-thumb {
      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+ }
+
+ .scroll{
+   height: 600px;
+   overflow-y: scroll;
  }
 
  .wholpage{

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
   <head>
     <meta charset="utf-8">
     <title>College Financial Planning Aid</title>
@@ -12,62 +13,55 @@
         let globalBudget = {{budget}};
       </script>
   </head>
+
   <body>
-    <div class="wholepage">
-    <div class="header">
-      <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 90px>
-      <p class= "logo" >Your Personal College Financial Planner</p>
-      <a class = "myButton" href="/" > HOME</a>
-      <a class = "myButton" href="/AddStudent" > + PROFILE </a>
-      <a class = "myButton" href="/preloaded_colleges" > + COLLEGE </a>
-      <a class = "myButton" href="/add_college" > CREATE COLLEGE </a>
-      <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
-    </div>
-    <br>
-    <br>
-  <div class="spreadsheet">
-    </div>
-    <div class="tbl-header">
-      <table id="college_table">
-        <thead>
-          <tr>
-            <th>School</th>
-            <th>Tuition</th>
-            <th>Housing</th>
-            <th>Food</th>
-            <th>Travel</th>
-            {% for flight_prices in prices %}
-            <p>{{flight_prices}}</p>
-            {%endfor%}
-            <th>Books</th>
-            <th>Other</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <div class="tbl-content">
-      <table>
-        <tbody>
-          {% for colleges in college %}
-          {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
+            <div class="header">
+              <img class="logo" class="logoimage" src="stylesheets/logo.png" height = 90px>
+              <p class= "logo" >Your Personal College Financial Planner</p>
+              <a class = "myButton" href="/" > HOME</a>
+              <a class = "myButton" href="/AddStudent" > + PROFILE </a>
+              <a class = "myButton" href="/preloaded_colleges" > + COLLEGE </a>
+              <a class = "myButton" href="/add_college" > CREATE COLLEGE </a>
+              <a class = "myButton" href="{{logout_url}}" > LOGOUT </a>
+            </div>
+                    <br><br>
+
+        <table>
+          <thead id="college_table" class="tbl-header">
             <tr>
-              <td class="schoolname">{{colleges.college_name}}</td>
-              <td>${{colleges.tuition}}</td>
-              <td>${{colleges.housing}}</td>
-              <td>${{colleges.food}}</td>
-              <td>${{colleges.travel}}</td>
-              <td>${{colleges.books}}</td>
-              <td>${{colleges.other}}</td>
-              <td class = "total" data-total = "{{total}}"> ${{total}}</td>
+              <th>School</th>
+              <th>Tuition</th>
+              <th>Housing</th>
+              <th>Food</th>
+              <th>Travel</th>
+              {% for flight_prices in prices %}
+              <p>{{flight_prices}}</p>
+              {%endfor%}
+              <th>Books</th>
+              <th>Other</th>
+              <th>Total</th>
             </tr>
-          {% endfor %}
-          <script type="text/javascript" src="/scripts/MainPage.js">
-          </script>
-        </tbody>
+          </thead>
+
+          <tbody class="tbl-content">
+            {% for colleges in college %}
+            {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other']%}
+              <tr>
+                <td class="schoolname">{{colleges.college_name}}</td>
+                <td>${{colleges.tuition}}</td>
+                <td>${{colleges.housing}}</td>
+                <td>${{colleges.food}}</td>
+                <td>${{colleges.travel}}</td>
+                <td>${{colleges.books}}</td>
+                <td>${{colleges.other}}</td>
+                <td class = "total" data-total = "{{total}}"> ${{total}}</td>
+              </tr>
+            {% endfor %}
+            <script type="text/javascript" src="/scripts/MainPage.js">
+            </script>
+          </tbody>
       </table>
-    </div>
-  </div>
-</div>
-</body>
+
+
+  </body>
 </html>
