@@ -33,7 +33,7 @@ class College(ndb.Model):
     student = ndb.KeyProperty(Student)
     college_key = ndb.KeyProperty(repeated = True)
     travel = ndb.IntegerProperty(required = True)
-    #college_location = ndb.StringProperty(required = True)
+    college_location = ndb.StringProperty(required = True)
 
 class PreLoadedCollege(ndb.Model):
     college_name = ndb.StringProperty(required = True)
