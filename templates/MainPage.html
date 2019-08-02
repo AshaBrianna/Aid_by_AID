@@ -32,8 +32,7 @@
   <div class="marginneeded">
   <div class="spreadsheet container">
     <table >
-      <div class="tbl-header">
-          <thead id="college_table">
+          <thead class="tbl-header" id="college_table">
             <tr>
               <th>School</th>
               <th>Tuition</th>
@@ -48,8 +47,6 @@
               <th class="drag">Total</th>
             </tr>
           </thead>
-      </div>
-    <div class="tbl-content">
           <tbody class="tbl-content">
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] + colleges['travel'] - colleges['grants'] %}
@@ -67,7 +64,6 @@
             <script type="text/javascript" src="/scripts/MainPage.js">
             </script>
           </tbody>
-        </div>
       </table>
 </div>
 </div>
