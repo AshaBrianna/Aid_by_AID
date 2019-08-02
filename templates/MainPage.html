@@ -30,7 +30,7 @@
     <br>
     <br>
   <div class="marginneeded">
-  <div class="spreadsheet container scroll">
+  <div class="spreadsheet container">
     <table >
           <thead class="tbl-header" id="college_table">
             <tr>
@@ -47,7 +47,7 @@
               <th class="drag">Total</th>
             </tr>
           </thead>
-          <tbody class="tbl-content">
+          <tbody class="tbl-content scroll">
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] + colleges['travel'] - colleges['grants'] %}
               <tr>
