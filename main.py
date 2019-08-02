@@ -146,24 +146,24 @@ class PopulateDataBase(webapp2.RequestHandler):
         uc_davis = PreLoadedCollege(college_name = "UC Davis", tuition = 14490, housing = 15863, food = 0, books = 1159, other = 0, college_location = "SJC").put()
         uc_la = PreLoadedCollege(college_name = "UC Los Angeles", tuition = 13239, housing = 16625, food = 0, books = 1464, other = 0, college_location = "LAX").put()
         uc_sc = PreLoadedCollege(college_name = "UC Santa Cruz", tuition = 13989, housing = 16950, food = 0, books = 1086, other = 0, college_location = "SJC").put()
-        uc_sd= PreLoadedCollege(college_name = "UC San Diego", tuition = 14451, housing = 14295, food = 0, books = 1128, other = 0).put()
-        uc_irvine= PreLoadedCollege(college_name = "UC Irvine", tuition = 15797, housing = 19744, food = 0, books = 0, other = 0).put()
-        uc_merced= PreLoadedCollege(college_name = "UC Merced", tuition = 13538, housing = 17046, food = 0, books = 1016, other = 0).put()
-        uc_sb= PreLoadedCollege(college_name = "UC Santa Barbara", tuition = 12570, housing = 15111, food = 0, books = 1185, other = 1875).put()
-        stanford = PreLoadedCollege(college_name = "Stanford University", tuition = 52857, housing = 16433, food = 0, books = 1245, other = 1905).put()
-        st_marys = PreLoadedCollege(college_name = "St. Mary's College", tuition = 32140, housing = 10720, food = 0, books = 1300, other = 0).put()
-        occidental = PreLoadedCollege(college_name = "Occidental College", tuition = 55980, housing = 9124, food = 6910, books = 1500, other = 600).put()
-        pomona = PreLoadedCollege(college_name = "Pomona University", tuition = 54380, housing = 17218, food = 0, books = 1500, other = 382).put()
-        santaclara= PreLoadedCollege(college_name = "Santa Clara University", tuition = 52998, housing = 15507, food = 0, books = 1971, other = 636).put()
-        usc = PreLoadedCollege(college_name = "USC", tuition = 57256, housing = 15916, food = 0, books = 1200, other = 939).put()
-        calpoly= PreLoadedCollege(college_name = "Cal Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0).put()
-        caltech = PreLoadedCollege(college_name = "Cal Tech", tuition = 52506, housing = 9615, food = 7029, books = 1428, other = 2094).put()
-        pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0).put()
+        uc_sd= PreLoadedCollege(college_name = "UC San Diego", tuition = 14451, housing = 14295, food = 0, books = 1128, other = 0, college_location = "SAN").put()
+        uc_irvine= PreLoadedCollege(college_name = "UC Irvine", tuition = 15797, housing = 19744, food = 0, books = 0, other = 0, college_location = "SFO").put()
+        uc_merced= PreLoadedCollege(college_name = "UC Merced", tuition = 13538, housing = 17046, food = 0, books = 1016, other = 0, college_location = "LAX").put()
+        uc_sb= PreLoadedCollege(college_name = "UC Santa Barbara", tuition = 12570, housing = 15111, food = 0, books = 1185, other = 1875, college_location = "SFO").put()
+        stanford = PreLoadedCollege(college_name = "Stanford University", tuition = 52857, housing = 16433, food = 0, books = 1245, other = 1905, college_location = "SFO").put()
+        st_marys = PreLoadedCollege(college_name = "St. Mary's College", tuition = 32140, housing = 10720, food = 0, books = 1300, other = 0,  college_location = "SFO").put()
+        occidental = PreLoadedCollege(college_name = "Occidental College", tuition = 55980, housing = 9124, food = 6910, books = 1500, other = 600, college_location = "SJC").put()
+        pomona = PreLoadedCollege(college_name = "Pomona University", tuition = 54380, housing = 17218, food = 0, books = 1500, other = 382, college_location = "SFO").put()
+        santaclara= PreLoadedCollege(college_name = "Santa Clara University", tuition = 52998, housing = 15507, food = 0, books = 1971, other = 636, college_location = "SJC").put()
+        usc = PreLoadedCollege(college_name = "USC", tuition = 57256, housing = 15916, food = 0, books = 1200, other = 939, college_location = "LAX").put()
+        calpoly= PreLoadedCollege(college_name = "Cal Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0, college_location = "SBP").put()
+        caltech = PreLoadedCollege(college_name = "Cal Tech", tuition = 52506, housing = 9615, food = 7029, books = 1428, other = 2094, college_location = "SFO").put()
+        pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0, college_location = "LAX").put()
         self.redirect('/', True)
-        if student is None:
+
             #TODO if a user does not have a student instance, redirect them to profile creation page
-            self.redirect("/AddStudent", True)
-            return
+        self.redirect("/AddStudent", True)
+
 
 
 class PreCodedCollegeHandler(webapp2.RequestHandler):
