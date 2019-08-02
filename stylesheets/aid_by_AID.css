@@ -194,9 +194,16 @@ button{
     background-color: (0, 128, 0, .4);
     }
 
+/* #mainpageRow #popup {
+  display: block;
+}
+  click #mainpageRow #popup {
+  display: none;
+} */
+
 .isInBudget {
   background-color: rgba(0, 128, 0, .4);
-  
+
   }
 
 .isNotInBudget{

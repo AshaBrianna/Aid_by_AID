@@ -109,6 +109,8 @@ class AddCollegeHandler(webapp2.RequestHandler):
             grants = int(self.request.get("grants")),
             ).put()
         self.redirect("/", True)
+        time.sleep(.3)
+
 
 
 #accesses the spreadsheet for now
@@ -127,8 +129,10 @@ class MainPageHandler(webapp2.RequestHandler):
             #TODO if a user does not have a student instance, redirect them to profile creation page
             self.redirect("/AddStudent", True)
             return
-        student_key = student.key
 
+
+
+        student_key = student.key
         college_list = College.query().filter(College.student==student_key)
         template = jinja_env.get_template('templates/MainPage.html')
         template_vars ={
@@ -136,6 +140,7 @@ class MainPageHandler(webapp2.RequestHandler):
             "logout_url": users.create_logout_url('/'),
             "budget": student.budget,
         }
+
         print(College.travel)
         self.response.write(template.render(template_vars))
 
@@ -177,7 +182,6 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
     def post(self):
-
         college_list = PreLoadedCollege.query().fetch()
         for college in college_list:
             selected = self.request.get(college.college_name)
@@ -208,6 +212,7 @@ class PreCodedCollegeHandler(webapp2.RequestHandler):
                 ).put()
 
         self.redirect('/', True)
+        time.sleep(.3)
 
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
