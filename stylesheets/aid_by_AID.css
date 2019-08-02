@@ -284,6 +284,16 @@ button{
    overflow-y: scroll;
  }
 
+tbody{
+  display:block;
+  overflow:auto;
+  height:200px;
+  width:100%;
+}
+thead tr{
+  display:block;
+}
+
  .wholpage{
    margin: auto;
    text-align: center;
@@ -291,4 +301,14 @@ button{
 
  .marginneeded{
    margin: 40px;
+ }
+
+ tbody{
+   display:block;
+   overflow:auto;
+   height:200px;
+   width:100%;
+ }
+ thead tr{
+   display:block;
  }

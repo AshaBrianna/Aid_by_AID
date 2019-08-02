@@ -47,7 +47,6 @@
               <th class="drag">Total</th>
             </tr>
           </thead>
-        <div class="scroll"
           <tbody class="tbl-content">
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] + colleges['travel'] - colleges['grants'] %}
@@ -65,8 +64,6 @@
             <script type="text/javascript" src="/scripts/MainPage.js">
             </script>
           </tbody>
-        </div>
-
         </div>
       </table>
 </div>
