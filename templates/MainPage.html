@@ -30,6 +30,7 @@
     <br>
     <br>
   <div class="marginneeded">
+<<<<<<< HEAD
   <div class="spreadsheet container">
     <div class="tbl-header">
       <table id="college_table">
@@ -53,6 +54,26 @@
     <div class="tbl-content">
       <table>
           <tbody class="tbl-content">
+=======
+  <div class="spreadsheet container scroll">
+    <table >
+          <thead id="college_table">
+            <tr>
+              <th>School</th>
+              <th>Tuition</th>
+              <th>Housing</th>
+              <th>Food</th>
+              <th>Travel</th>
+              {% for flight_prices in prices %}
+              <p>{{flight_prices}}</p>
+              {%endfor%}
+              <th class="drag">Books</th>
+              <th class="drag">Other</th>
+              <th class="drag">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+>>>>>>> b2422ca61749900a593458cc184914108c7d3873
             {% for colleges in college %}
             {% set total = colleges['tuition'] + colleges['books'] + colleges['housing'] + colleges['food'] + colleges['other'] + colleges['travel'] - colleges['grants'] %}
               <tr>
@@ -69,8 +90,8 @@
             <script type="text/javascript" src="/scripts/MainPage.js">
             </script>
           </tbody>
+        </div>
       </table>
-    </div>
 </div>
 </div>
 <!-- <script type="text/javascript" src="scripts/MainPage.js"> -->

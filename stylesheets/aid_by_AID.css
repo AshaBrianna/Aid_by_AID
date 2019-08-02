@@ -210,22 +210,17 @@ button{
   background-color: rgba(255, 0, 0, 0.4);
  }
 
- table{
-   width:100%;
-   table-layout: auto;
- }
-
- .tbl-header{
+thead{
    background-color: tan;
    -moz-box-shadow: 14px 10px 41px 3px #A46A32;
    -webkit-box-shadow: 14px 10px 41px 3px #A46A32;
    width:100%;
   }
 
- .tbl-content{
+tbody{
    width: 100%;
-   height:600px;
-   overflow-x:auto;
+   height:400px;
+   overflow-y:auto;
    margin-top: 0px;
    border: 3px solid tan;
    -moz-box-shadow: 14px 10px 41px 3px #A46A32;
@@ -241,10 +236,6 @@ button{
    text-transform: uppercase;
  }
 
-.schoolheader{
-  width:40%
-}
-
  td{
    padding: 15px;
    text-align: center;
@@ -257,9 +248,14 @@ button{
  .schoolname
   {text-transform: uppercase;}
 
+  table{
+    width:100%;
+    table-layout: auto;
+  }
 
  /* demo styles for background*/
  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
 
  body{
    color:saddlebrown;
