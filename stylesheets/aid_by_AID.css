@@ -289,7 +289,7 @@ tbody{
   overflow:auto;
   height:500px;
 }
-thead tr{
+thead{
   display:block;
 }
 
