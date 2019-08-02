@@ -13,8 +13,8 @@ html{
 
 
 .header{
-  -moz-box-shadow: 14px 10px 41px 3px #cd863f;
-	-webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+  -moz-box-shadow: 14px 10px 41px 3px #A46A32;
+	-webkit-box-shadow: 14px 10px 41px 3px #A46A32;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,9 +27,9 @@ html{
   margin-left: 20px;
   margin-right: 20px;
   height: 20px;
-	-moz-box-shadow: 14px 10px 41px 3px #cd863f;
-	-webkit-box-shadow: 14px 10px 41px 3px #cd863f;
-	box-shadow: 14px 10px 41px 3px #cd863f;
+	-moz-box-shadow: 14px 10px 41px 3px #A46A32;
+	-webkit-box-shadow: 14px 10px 41px 3px #A46A32;
+	box-shadow: 14px 10px 41px 3px #A46A32;
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fff8dc), color-stop(1, #ffebcd));
 	background:-moz-linear-gradient(top, #fff8dc 5%, #ffebcd 100%);
 	background:-webkit-linear-gradient(top, #fff8dc 5%, #ffebcd 100%);
@@ -50,7 +50,7 @@ html{
 	font-weight:bold;
 	padding:10px 18px;
 	text-decoration:none;
-	text-shadow:2px 3px 50px #cd863f;
+	text-shadow:2px 3px 50px #A46A32;
 }
 .myButton:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffebcd), color-stop(1, #fff8dc));
@@ -115,8 +115,8 @@ input[type=submit]:hover {
   border-radius: 5px;
   padding: 2px;
   border: 2px solid white;
-  -moz-box-shadow: 14px 10px 41px 3px #cd863f;
-  -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+  -moz-box-shadow: 14px 10px 41px 3px #A46A32;
+  -webkit-box-shadow: 14px 10px 41px 3px #A46A32;
   min-height:600px;
   }
 
@@ -209,8 +209,8 @@ button{
 
  .tbl-header{
    background-color: tan;
-   -moz-box-shadow: 14px 10px 41px 3px #cd863f;
-   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+   -moz-box-shadow: 14px 10px 41px 3px #A46A32;
+   -webkit-box-shadow: 14px 10px 41px 3px #A46A32;
    width:100%;
   }
 
@@ -220,8 +220,8 @@ button{
    overflow-x:auto;
    margin-top: 0px;
    border: 3px solid tan;
-   -moz-box-shadow: 14px 10px 41px 3px #cd863f;
-   -webkit-box-shadow: 14px 10px 41px 3px #cd863f;
+   -moz-box-shadow: 14px 10px 41px 3px #A46A32;
+   -webkit-box-shadow: 14px 10px 41px 3px #A46A32;
  }
 
  th{
