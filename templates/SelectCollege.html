@@ -17,16 +17,15 @@
   <body>
     <form action="/preloaded_colleges" method="POST" class="marginneeded">
 
-      <div class="container scroll">
+    <div class="container scroll">
         <br>
         <br>
       {% for colleges in college %}
-
-      <input type="checkbox" name="{{colleges.college_name}}">{{colleges.college_name}}</li>
-      <br>
-      <br>
+        <input type="checkbox" name="{{colleges.college_name}}" >{{colleges.college_name}}
+        <br>
+        <br>
       {% endfor %}
-      </div>
+    </div>
 
       <br>
       <input type="submit" name="" value="ADD SELECTED COLLEGES">
