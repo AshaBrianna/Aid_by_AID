@@ -156,7 +156,7 @@ class PopulateDataBase(webapp2.RequestHandler):
         pomona = PreLoadedCollege(college_name = "Pomona University", tuition = 54380, housing = 17218, food = 0, books = 1500, other = 382, college_location = "SFO").put()
         santaclara= PreLoadedCollege(college_name = "Santa Clara University", tuition = 52998, housing = 15507, food = 0, books = 1971, other = 636, college_location = "SJC").put()
         usc = PreLoadedCollege(college_name = "USC", tuition = 57256, housing = 15916, food = 0, books = 1200, other = 939, college_location = "LAX").put()
-        calpoly= PreLoadedCollege(college_name = "Cal Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0, college_location = "SBP").put()
+        calpoly= PreLoadedCollege(college_name = "Cal Poly SLO", tuition = 9942, housing = 14208, food = 0, books = 2000, other = 0, college_location = "SFO").put()
         caltech = PreLoadedCollege(college_name = "Cal Tech", tuition = 52506, housing = 9615, food = 7029, books = 1428, other = 2094, college_location = "SFO").put()
         pepperdine = PreLoadedCollege(college_name = "Pepperdine", tuition = 55640, housing = 15670, food = 0, books = 1250, other = 0, college_location = "LAX").put()
         self.redirect('/', True)
